@@ -955,8 +955,8 @@
         </view>
         <style>
           <style-rule element='axis'>
-            <encoding attr='space' class='0' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Longitude (generated)]' field-type='quantitative' max='-3877993.1754706847' min='-10800029.142987488' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
-            <encoding attr='space' class='0' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Latitude (generated)]' field-type='quantitative' max='-1585157.129940399' min='-7469498.0813109335' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Longitude (generated)]' field-type='quantitative' max='-3869668.8417214677' min='-13085995.28781849' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Latitude (generated)]' field-type='quantitative' max='-1718723.7733751154' min='-9748468.2732563317' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
           </style-rule>
           <style-rule element='map'>
             <format attr='washout' value='0.0' />
@@ -1111,8 +1111,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='950' minheight='950' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='22' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98148' id='21' param='vert' type-v2='layout-flow' w='98872' x='564' y='926'>
+            <zone h='100000' id='26' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98148' id='25' param='vert' type-v2='layout-flow' w='98872' x='564' y='926'>
                 <zone fixed-size='280' h='98148' id='3' is-fixed='true' name='Individuals using the Internet (% of population)' w='43797' x='564' y='926'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -1256,8 +1256,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='1750' minheight='1750' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='26' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98140' id='25' param='vert' type-v2='layout-flow' w='98896' x='552' y='930'>
+            <zone h='100000' id='30' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98140' id='29' param='vert' type-v2='layout-flow' w='98896' x='552' y='930'>
                 <zone h='7326' id='24' type-v2='text' w='18552' x='44759' y='465'>
                   <formatted-text>
                     <run>MELI&#10;</run>
@@ -1591,7 +1591,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='15' />
+      <active id='17' />
       <simple-id uuid='{72034256-0A40-493F-9646-659016883ACD}' />
     </window>
     <window class='dashboard' name='Dashboard 1'>

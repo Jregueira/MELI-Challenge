@@ -1,0 +1,1560 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20243.24.1010.1014                               -->
+<workbook original-version='18.1' source-build='2024.3.0 (20243.24.1010.1014)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
+    <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <MapboxVectorStylesAndLayers />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+    <WorksheetBackgroundTransparency />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Cleaned_API_IT.NET.USER' inline='true' name='federated.1vkvqyh12a0xdq10etmx51ayv9ki' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Cleaned_API_IT.NET.USER' name='textscan.0aena9w017wlmd1eql17q12719qg'>
+            <connection class='textscan' directory='C:/Users/JP/Documents/GitHub/ChallengeMeli/MELI P1/CSV CLEAN' filename='clean_MOBILE_TEL_100.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='clean_MOBILE_TEL_100' name='textscan.0v3py6308lqnpp17ss78q10xorii'>
+            <connection class='textscan' directory='C:/Users/JP/Documents/GitHub/ChallengeMeli/MELI P1/CSV CLEAN' filename='clean_MOBILE_TEL_100.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='Cleaned_NET.USER_norm' name='textscan.1b8xgmt19uzyzx1e5de7y1ygqf2n'>
+            <connection class='textscan' directory='C:/Users/JP/Documents/GitHub/ChallengeMeli/MELI P1/CSV CLEAN' filename='Cleaned_NET.USER_norm.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation type='collection'>
+          <relation connection='textscan.1b8xgmt19uzyzx1e5de7y1ygqf2n' name='Cleaned_NET.USER_norm.csv' table='[Cleaned_NET.USER_norm#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_AR' separator=';'>
+              <column datatype='integer' name='F1' ordinal='0' />
+              <column datatype='string' name='Country Name' ordinal='1' />
+              <column datatype='string' name='Country Code' ordinal='2' />
+              <column datatype='date' date-parse-format='yyyy' name='Year' ordinal='3' />
+              <column datatype='real' name='Internet Usage (%)' ordinal='4' />
+            </columns>
+          </relation>
+          <relation connection='textscan.0aena9w017wlmd1eql17q12719qg' name='Cleaned_FIXED_TEL_100_norm.csv' table='[Cleaned_FIXED_TEL_100_norm#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_AR' separator=';'>
+              <column datatype='integer' name='F1' ordinal='0' />
+              <column datatype='string' name='Country Name' ordinal='1' />
+              <column datatype='string' name='Country Code' ordinal='2' />
+              <column datatype='integer' name='Year' ordinal='3' />
+              <column datatype='real' name='Fixed Telephone Lines' ordinal='4' />
+            </columns>
+          </relation>
+          <relation connection='textscan.0aena9w017wlmd1eql17q12719qg' name='Cleaned_MOBILE_TEL_100_norm.csv' table='[Cleaned_MOBILE_TEL_100_norm#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_AR' separator=';'>
+              <column datatype='integer' name='F1' ordinal='0' />
+              <column datatype='string' name='Country Name' ordinal='1' />
+              <column datatype='string' name='Country Code' ordinal='2' />
+              <column datatype='integer' name='Year' ordinal='3' />
+              <column datatype='real' name='Mobile Telephone Lines' ordinal='4' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[Country Code (Cleaned_FIXED_TEL_100_norm.csv)]' value='[Cleaned_FIXED_TEL_100_norm.csv].[Country Code]' />
+          <map key='[Country Code (Cleaned_MOBILE_TEL_100_norm.csv)]' value='[Cleaned_MOBILE_TEL_100_norm.csv].[Country Code]' />
+          <map key='[Country Code]' value='[Cleaned_NET.USER_norm.csv].[Country Code]' />
+          <map key='[Country Name (Cleaned_FIXED_TEL_100_norm.csv)]' value='[Cleaned_FIXED_TEL_100_norm.csv].[Country Name]' />
+          <map key='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' value='[Cleaned_MOBILE_TEL_100_norm.csv].[Country Name]' />
+          <map key='[Country Name]' value='[Cleaned_NET.USER_norm.csv].[Country Name]' />
+          <map key='[F1 (Cleaned_FIXED_TEL_100_norm.csv)]' value='[Cleaned_FIXED_TEL_100_norm.csv].[F1]' />
+          <map key='[F1 (Cleaned_MOBILE_TEL_100_norm.csv)]' value='[Cleaned_MOBILE_TEL_100_norm.csv].[F1]' />
+          <map key='[F1]' value='[Cleaned_NET.USER_norm.csv].[F1]' />
+          <map key='[Fixed Telephone Lines]' value='[Cleaned_FIXED_TEL_100_norm.csv].[Fixed Telephone Lines]' />
+          <map key='[Internet Usage (%)]' value='[Cleaned_NET.USER_norm.csv].[Internet Usage (%)]' />
+          <map key='[Mobile Telephone Lines]' value='[Cleaned_MOBILE_TEL_100_norm.csv].[Mobile Telephone Lines]' />
+          <map key='[Year (Cleaned_FIXED_TEL_100_norm.csv)]' value='[Cleaned_FIXED_TEL_100_norm.csv].[Year]' />
+          <map key='[Year (Cleaned_MOBILE_TEL_100_norm.csv)]' value='[Cleaned_MOBILE_TEL_100_norm.csv].[Year]' />
+          <map key='[Year]' value='[Cleaned_NET.USER_norm.csv].[Year]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Cleaned_NET.USER_norm.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;;&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_AR&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Cleaned_FIXED_TEL_100_norm.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;;&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_AR&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Cleaned_MOBILE_TEL_100_norm.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;;&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_AR&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1]</local-name>
+            <parent-name>[Cleaned_NET.USER_norm.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country Name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Country Name]</local-name>
+            <parent-name>[Cleaned_NET.USER_norm.csv]</parent-name>
+            <remote-alias>Country Name</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country Code</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Country Code]</local-name>
+            <parent-name>[Cleaned_NET.USER_norm.csv]</parent-name>
+            <remote-alias>Country Code</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Year</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[Year]</local-name>
+            <parent-name>[Cleaned_NET.USER_norm.csv]</parent-name>
+            <remote-alias>Year</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Internet Usage (%)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Internet Usage (%)]</local-name>
+            <parent-name>[Cleaned_NET.USER_norm.csv]</parent-name>
+            <remote-alias>Internet Usage (%)</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1 (Cleaned_FIXED_TEL_100_norm.csv)]</local-name>
+            <parent-name>[Cleaned_FIXED_TEL_100_norm.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country Name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Country Name (Cleaned_FIXED_TEL_100_norm.csv)]</local-name>
+            <parent-name>[Cleaned_FIXED_TEL_100_norm.csv]</parent-name>
+            <remote-alias>Country Name</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country Code</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Country Code (Cleaned_FIXED_TEL_100_norm.csv)]</local-name>
+            <parent-name>[Cleaned_FIXED_TEL_100_norm.csv]</parent-name>
+            <remote-alias>Country Code</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Year (Cleaned_FIXED_TEL_100_norm.csv)]</local-name>
+            <parent-name>[Cleaned_FIXED_TEL_100_norm.csv]</parent-name>
+            <remote-alias>Year</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Fixed Telephone Lines</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Fixed Telephone Lines]</local-name>
+            <parent-name>[Cleaned_FIXED_TEL_100_norm.csv]</parent-name>
+            <remote-alias>Fixed Telephone Lines</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1 (Cleaned_MOBILE_TEL_100_norm.csv)]</local-name>
+            <parent-name>[Cleaned_MOBILE_TEL_100_norm.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country Name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]</local-name>
+            <parent-name>[Cleaned_MOBILE_TEL_100_norm.csv]</parent-name>
+            <remote-alias>Country Name</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country Code</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Country Code (Cleaned_MOBILE_TEL_100_norm.csv)]</local-name>
+            <parent-name>[Cleaned_MOBILE_TEL_100_norm.csv]</parent-name>
+            <remote-alias>Country Code</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Year (Cleaned_MOBILE_TEL_100_norm.csv)]</local-name>
+            <parent-name>[Cleaned_MOBILE_TEL_100_norm.csv]</parent-name>
+            <remote-alias>Year</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Mobile Telephone Lines</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Mobile Telephone Lines]</local-name>
+            <parent-name>[Cleaned_MOBILE_TEL_100_norm.csv]</parent-name>
+            <remote-alias>Mobile Telephone Lines</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Country Code (Cleaned FIXED TEL 100 norm.csv)' datatype='string' name='[Country Code (Cleaned_FIXED_TEL_100_norm.csv)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='Country Code (Cleaned MOBILE TEL 100 norm.csv)' datatype='string' name='[Country Code (Cleaned_MOBILE_TEL_100_norm.csv)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column datatype='string' name='[Country Code]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='Country Name (Cleaned FIXED TEL 100 norm.csv)' datatype='string' name='[Country Name (Cleaned_FIXED_TEL_100_norm.csv)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='Country Name (Cleaned MOBILE TEL 100 norm.csv)' datatype='string' name='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='Country Name1' datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='F1 (Cleaned FIXED TEL 100 norm.csv)' datatype='integer' name='[F1 (Cleaned_FIXED_TEL_100_norm.csv)]' role='measure' type='quantitative' />
+      <column caption='F1 (Cleaned MOBILE TEL 100 norm.csv)' datatype='integer' name='[F1 (Cleaned_MOBILE_TEL_100_norm.csv)]' role='measure' type='quantitative' />
+      <column caption='Internet Usage (%)1' datatype='real' datatype-customized='true' name='[Internet Usage (%)]' role='measure' type='quantitative' />
+      <column caption='Year (Cleaned FIXED TEL 100 norm.csv)' datatype='integer' name='[Year (Cleaned_FIXED_TEL_100_norm.csv)]' role='dimension' type='quantitative' />
+      <column caption='Year (Cleaned MOBILE TEL 100 norm.csv)' datatype='integer' name='[Year (Cleaned_MOBILE_TEL_100_norm.csv)]' role='dimension' type='quantitative' />
+      <column datatype='date' datatype-customized='true' name='[Year]' role='dimension' type='ordinal' />
+      <column caption='Cleaned_FIXED_TEL_100_norm.csv' datatype='table' name='[__tableau_internal_object_id__].[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]' role='measure' type='quantitative' />
+      <column caption='Cleaned_MOBILE_TEL_100_norm.csv' datatype='table' name='[__tableau_internal_object_id__].[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]' role='measure' type='quantitative' />
+      <column caption='Cleaned_NET.USER_norm.csv' datatype='table' name='[__tableau_internal_object_id__].[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]' role='measure' type='quantitative' />
+      <column-instance column='[Country Name (Cleaned_FIXED_TEL_100_norm.csv)]' derivation='None' name='[none:Country Name (Cleaned_FIXED_TEL_100_norm.csv):nk]' pivot='key' type='nominal' />
+      <column-instance column='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' derivation='None' name='[none:Country Name (Cleaned_MOBILE_TEL_100_norm.csv):nk]' pivot='key' type='nominal' />
+      <column-instance column='[Country Name]' derivation='None' name='[none:Country Name:nk]' pivot='key' type='nominal' />
+      <group caption='Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name1)' hidden='true' name='[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name1)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' />
+          <groupfilter function='level-members' level='[Country Name]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (Country Name1,Country Name)' hidden='true' name='[Action (Country Name1,Country Name)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Country Name]' />
+          <groupfilter function='level-members' level='[Country_Name]' />
+        </groupfilter>
+      </group>
+      <extract _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/JP/AppData/Local/Temp/TableauTemp/#TableauTemp_1o0u95e092ttwv15hrmjx141fofq.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='02/22/2025 05:26:05 AM' username='tableau_internal_user'>
+          <relation type='collection'>
+            <relation name='Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84' table='[Extract].[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]' type='table' />
+            <relation name='Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D' table='[Extract].[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]' type='table' />
+            <relation name='Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7' table='[Extract].[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]' type='table' />
+          </relation>
+          <cols>
+            <map key='[Country Code (Cleaned_FIXED_TEL_100_norm.csv)]' value='[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D].[Country Code]' />
+            <map key='[Country Code (Cleaned_MOBILE_TEL_100_norm.csv)]' value='[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7].[Country Code]' />
+            <map key='[Country Code]' value='[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84].[Country Code]' />
+            <map key='[Country Name (Cleaned_FIXED_TEL_100_norm.csv)]' value='[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D].[Country Name]' />
+            <map key='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' value='[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7].[Country Name]' />
+            <map key='[Country Name]' value='[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84].[Country Name]' />
+            <map key='[F1 (Cleaned_FIXED_TEL_100_norm.csv)]' value='[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D].[F1]' />
+            <map key='[F1 (Cleaned_MOBILE_TEL_100_norm.csv)]' value='[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7].[F1]' />
+            <map key='[F1]' value='[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84].[F1]' />
+            <map key='[Fixed Telephone Lines]' value='[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D].[Fixed Telephone Lines]' />
+            <map key='[Internet Usage (%)]' value='[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84].[Internet Usage (%)]' />
+            <map key='[Mobile Telephone Lines]' value='[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7].[Mobile Telephone Lines]' />
+            <map key='[Year (Cleaned_FIXED_TEL_100_norm.csv)]' value='[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D].[Year]' />
+            <map key='[Year (Cleaned_MOBILE_TEL_100_norm.csv)]' value='[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7].[Year]' />
+            <map key='[Year]' value='[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84].[Year]' />
+          </cols>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>F1</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[F1]</local-name>
+              <parent-name>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</parent-name>
+              <remote-alias>F1</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Cleaned_NET.USER_norm.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>384</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Country Name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Country Name]</local-name>
+              <parent-name>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</parent-name>
+              <remote-alias>Country Name</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Cleaned_NET.USER_norm.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Country Code</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Country Code]</local-name>
+              <parent-name>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</parent-name>
+              <remote-alias>Country Code</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Cleaned_NET.USER_norm.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Year</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[Year]</local-name>
+              <parent-name>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</parent-name>
+              <remote-alias>Year</remote-alias>
+              <ordinal>3</ordinal>
+              <family>Cleaned_NET.USER_norm.csv</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>64</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Internet Usage (%)</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Internet Usage (%)]</local-name>
+              <parent-name>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</parent-name>
+              <remote-alias>Internet Usage (%)</remote-alias>
+              <ordinal>4</ordinal>
+              <family>Cleaned_NET.USER_norm.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>181</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>F1</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[F1 (Cleaned_FIXED_TEL_100_norm.csv)]</local-name>
+              <parent-name>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</parent-name>
+              <remote-alias>F1</remote-alias>
+              <ordinal>5</ordinal>
+              <family>Cleaned_FIXED_TEL_100_norm.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>384</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Country Name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Country Name (Cleaned_FIXED_TEL_100_norm.csv)]</local-name>
+              <parent-name>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</parent-name>
+              <remote-alias>Country Name</remote-alias>
+              <ordinal>6</ordinal>
+              <family>Cleaned_FIXED_TEL_100_norm.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Country Code</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Country Code (Cleaned_FIXED_TEL_100_norm.csv)]</local-name>
+              <parent-name>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</parent-name>
+              <remote-alias>Country Code</remote-alias>
+              <ordinal>7</ordinal>
+              <family>Cleaned_FIXED_TEL_100_norm.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Year</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Year (Cleaned_FIXED_TEL_100_norm.csv)]</local-name>
+              <parent-name>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</parent-name>
+              <remote-alias>Year</remote-alias>
+              <ordinal>8</ordinal>
+              <family>Cleaned_FIXED_TEL_100_norm.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>64</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Fixed Telephone Lines</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Fixed Telephone Lines]</local-name>
+              <parent-name>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</parent-name>
+              <remote-alias>Fixed Telephone Lines</remote-alias>
+              <ordinal>9</ordinal>
+              <family>Cleaned_FIXED_TEL_100_norm.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>297</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>F1</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[F1 (Cleaned_MOBILE_TEL_100_norm.csv)]</local-name>
+              <parent-name>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</parent-name>
+              <remote-alias>F1</remote-alias>
+              <ordinal>10</ordinal>
+              <family>Cleaned_MOBILE_TEL_100_norm.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>384</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Country Name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]</local-name>
+              <parent-name>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</parent-name>
+              <remote-alias>Country Name</remote-alias>
+              <ordinal>11</ordinal>
+              <family>Cleaned_MOBILE_TEL_100_norm.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Country Code</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Country Code (Cleaned_MOBILE_TEL_100_norm.csv)]</local-name>
+              <parent-name>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</parent-name>
+              <remote-alias>Country Code</remote-alias>
+              <ordinal>12</ordinal>
+              <family>Cleaned_MOBILE_TEL_100_norm.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Year</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Year (Cleaned_MOBILE_TEL_100_norm.csv)]</local-name>
+              <parent-name>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</parent-name>
+              <remote-alias>Year</remote-alias>
+              <ordinal>13</ordinal>
+              <family>Cleaned_MOBILE_TEL_100_norm.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>64</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Mobile Telephone Lines</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Mobile Telephone Lines]</local-name>
+              <parent-name>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</parent-name>
+              <remote-alias>Mobile Telephone Lines</remote-alias>
+              <ordinal>14</ordinal>
+              <family>Cleaned_MOBILE_TEL_100_norm.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>197</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' rowDisplayCount='1000' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:Country Name (Cleaned_FIXED_TEL_100_norm.csv):nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;Argentina&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Rest of Latam&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;Paraguay&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Chile&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;Uruguay&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Bolivia&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:Country Name:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;Argentina&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Rest of Latam&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;Paraguay&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Chile&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;Uruguay&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Bolivia&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:Country Name (Cleaned_MOBILE_TEL_100_norm.csv):nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;Argentina&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Rest of Latam&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;Paraguay&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Chile&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;Uruguay&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Bolivia&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <object-graph>
+        <objects>
+          <object caption='Cleaned_FIXED_TEL_100_norm.csv' id='Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D'>
+            <properties context=''>
+              <relation connection='textscan.0aena9w017wlmd1eql17q12719qg' name='Cleaned_FIXED_TEL_100_norm.csv' table='[Cleaned_FIXED_TEL_100_norm#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='es_AR' separator=';'>
+                  <column datatype='integer' name='F1' ordinal='0' />
+                  <column datatype='string' name='Country Name' ordinal='1' />
+                  <column datatype='string' name='Country Code' ordinal='2' />
+                  <column datatype='integer' name='Year' ordinal='3' />
+                  <column datatype='real' name='Fixed Telephone Lines' ordinal='4' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D' table='[Extract].[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]' type='table' />
+            </properties>
+          </object>
+          <object caption='Cleaned_MOBILE_TEL_100_norm.csv' id='Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7'>
+            <properties context=''>
+              <relation connection='textscan.0aena9w017wlmd1eql17q12719qg' name='Cleaned_MOBILE_TEL_100_norm.csv' table='[Cleaned_MOBILE_TEL_100_norm#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='es_AR' separator=';'>
+                  <column datatype='integer' name='F1' ordinal='0' />
+                  <column datatype='string' name='Country Name' ordinal='1' />
+                  <column datatype='string' name='Country Code' ordinal='2' />
+                  <column datatype='integer' name='Year' ordinal='3' />
+                  <column datatype='real' name='Mobile Telephone Lines' ordinal='4' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7' table='[Extract].[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]' type='table' />
+            </properties>
+          </object>
+          <object caption='Cleaned_NET.USER_norm.csv' id='Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84'>
+            <properties context=''>
+              <relation connection='textscan.1b8xgmt19uzyzx1e5de7y1ygqf2n' name='Cleaned_NET.USER_norm.csv' table='[Cleaned_NET.USER_norm#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='es_AR' separator=';'>
+                  <column datatype='integer' name='F1' ordinal='0' />
+                  <column datatype='string' name='Country Name' ordinal='1' />
+                  <column datatype='string' name='Country Code' ordinal='2' />
+                  <column datatype='date' date-parse-format='yyyy' name='Year' ordinal='3' />
+                  <column datatype='real' name='Internet Usage (%)' ordinal='4' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84' table='[Extract].[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]' type='table' />
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[Country Name]' />
+              <expression op='[Country Name (Cleaned_FIXED_TEL_100_norm.csv)]' />
+            </expression>
+            <first-end-point object-id='Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84' />
+            <second-end-point object-id='Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[Country Name]' />
+              <expression op='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' />
+            </expression>
+            <first-end-point object-id='Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84' />
+            <second-end-point object-id='Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7' />
+          </relationship>
+        </relationships>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <actions>
+    <action caption='Filter 1 (generated)' name='[Action1_CDBC4DA49BEF42538E04F43DE1ACA770]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Dashboard 2' type='sheet' worksheet='Legend' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Dashboard 2' />
+      </command>
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name='Fixed line subscriptions (per 100 people)'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Cleaned_API_IT.NET.USER' name='federated.1vkvqyh12a0xdq10etmx51ayv9ki' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.1vkvqyh12a0xdq10etmx51ayv9ki'>
+            <column caption='Country Name (Cleaned FIXED TEL 100 norm.csv)' datatype='string' name='[Country Name (Cleaned_FIXED_TEL_100_norm.csv)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column caption='Country Name (Cleaned MOBILE TEL 100 norm.csv)' datatype='string' name='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column caption='Country Name1' datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='real' name='[Fixed Telephone Lines]' role='measure' type='quantitative' />
+            <column caption='Year (Cleaned FIXED TEL 100 norm.csv)' datatype='integer' name='[Year (Cleaned_FIXED_TEL_100_norm.csv)]' role='dimension' type='quantitative' />
+            <column-instance column='[Country Name (Cleaned_FIXED_TEL_100_norm.csv)]' derivation='None' name='[none:Country Name (Cleaned_FIXED_TEL_100_norm.csv):nk]' pivot='key' type='nominal' />
+            <column-instance column='[Year (Cleaned_FIXED_TEL_100_norm.csv)]' derivation='None' name='[none:Year (Cleaned_FIXED_TEL_100_norm.csv):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Fixed Telephone Lines]' derivation='Sum' name='[sum:Fixed Telephone Lines:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name1)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_CDBC4DA49BEF42538E04F43DE1ACA770]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' />
+              <groupfilter function='level-members' level='[Country Name]' />
+            </groupfilter>
+          </filter>
+          <filter class='quantitative' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Fixed Telephone Lines:qk]' included-values='non-null' />
+          <slices>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Fixed Telephone Lines:qk]</column>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name1)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Year (Cleaned_FIXED_TEL_100_norm.csv):qk]' field-type='quantitative' max='2023' min='1990' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name (Cleaned_FIXED_TEL_100_norm.csv):nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Fixed Telephone Lines:qk]</rows>
+        <cols>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Year (Cleaned_FIXED_TEL_100_norm.csv):qk]</cols>
+      </table>
+      <simple-id uuid='{115B8FD8-4CA5-49BD-82C8-2EBBC1368159}' />
+    </worksheet>
+    <worksheet name='Individuals using the Internet (% of population)'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Cleaned_API_IT.NET.USER' name='federated.1vkvqyh12a0xdq10etmx51ayv9ki' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.1vkvqyh12a0xdq10etmx51ayv9ki'>
+            <column caption='Country Name (Cleaned MOBILE TEL 100 norm.csv)' datatype='string' name='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column caption='Country Name1' datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column caption='Internet Usage (%)1' datatype='real' datatype-customized='true' name='[Internet Usage (%)]' role='measure' type='quantitative' />
+            <column datatype='date' datatype-customized='true' name='[Year]' role='dimension' type='ordinal' />
+            <column-instance column='[Country Name]' derivation='None' name='[none:Country Name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Year]' derivation='None' name='[none:Year:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Internet Usage (%)]' derivation='Sum' name='[sum:Internet Usage (%):qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name1)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_CDBC4DA49BEF42538E04F43DE1ACA770]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' />
+              <groupfilter function='level-members' level='[Country Name]' />
+            </groupfilter>
+          </filter>
+          <filter class='quantitative' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Internet Usage (%):qk]' included-values='non-null' />
+          <slices>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Internet Usage (%):qk]</column>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name1)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Year:qk]' field-type='quantitative' max='#2023-09-18#' min='#1990-04-15#' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Internet Usage (%):qk]</rows>
+        <cols>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Year:qk]</cols>
+      </table>
+      <simple-id uuid='{51F1E007-29B4-4D0C-8037-914341484430}' />
+    </worksheet>
+    <worksheet name='Legend'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Cleaned_API_IT.NET.USER' name='federated.1vkvqyh12a0xdq10etmx51ayv9ki' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.1vkvqyh12a0xdq10etmx51ayv9ki'>
+            <column caption='Country Name (Cleaned MOBILE TEL 100 norm.csv)' datatype='string' name='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column caption='Country Name1' datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column-instance column='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' derivation='None' name='[none:Country Name (Cleaned_MOBILE_TEL_100_norm.csv):nk]' pivot='key' type='nominal' />
+            <column-instance column='[Country Name]' derivation='None' name='[none:Country Name:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='height' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name (Cleaned_MOBILE_TEL_100_norm.csv):nk]' value='19' />
+          </style-rule>
+          <style-rule element='field-labels'>
+            <format attr='background-color' value='#00000000' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='pane'>
+                <format attr='minheight' value='-1' />
+                <format attr='maxheight' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name (Cleaned_MOBILE_TEL_100_norm.csv):nk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{86F49B6C-9D2A-4EE3-B2FE-E264AA8255EF}' />
+    </worksheet>
+    <worksheet name='Map Penetracion internet 2022'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Cleaned_API_IT.NET.USER' name='federated.1vkvqyh12a0xdq10etmx51ayv9ki' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.1vkvqyh12a0xdq10etmx51ayv9ki'>
+            <column caption='Country Name (Cleaned MOBILE TEL 100 norm.csv)' datatype='string' name='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column caption='Country Name1' datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column caption='Internet Usage (%)1' datatype='real' datatype-customized='true' name='[Internet Usage (%)]' role='measure' type='quantitative' />
+            <column datatype='date' datatype-customized='true' name='[Year]' role='dimension' type='ordinal' />
+            <column-instance column='[Country Name]' derivation='None' name='[none:Country Name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Internet Usage (%)]' derivation='Sum' name='[sum:Internet Usage (%):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Year]' derivation='Year' name='[yr:Year:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name1)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_CDBC4DA49BEF42538E04F43DE1ACA770]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' />
+              <groupfilter function='level-members' level='[Country Name]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]'>
+            <groupfilter function='member' level='[yr:Year:ok]' member='2022' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]</column>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name1)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Longitude (generated)]' field-type='quantitative' max='-1222414.8422320802' min='-9105207.6467652321' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Latitude (generated)]' field-type='quantitative' max='-336665.53847115673' min='-7204565.9471755996' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk]' />
+              <color column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Internet Usage (%):qk]' />
+              <geometry column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Geometry (generated)]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Latitude (generated)]</rows>
+        <cols>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Longitude (generated)]</cols>
+      </table>
+      <simple-id uuid='{5705ABAE-D9B1-4813-8E3B-E4C7176B4DB1}' />
+    </worksheet>
+    <worksheet name='Mobile cellular subscriptions (per 100 people)'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Cleaned_API_IT.NET.USER' name='federated.1vkvqyh12a0xdq10etmx51ayv9ki' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1vkvqyh12a0xdq10etmx51ayv9ki'>
+            <column caption='Country Name (Cleaned MOBILE TEL 100 norm.csv)' datatype='string' name='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column caption='Country Name1' datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='real' name='[Mobile Telephone Lines]' role='measure' type='quantitative' />
+            <column caption='Year (Cleaned MOBILE TEL 100 norm.csv)' datatype='integer' name='[Year (Cleaned_MOBILE_TEL_100_norm.csv)]' role='dimension' type='quantitative' />
+            <column-instance column='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' derivation='None' name='[none:Country Name (Cleaned_MOBILE_TEL_100_norm.csv):nk]' pivot='key' type='nominal' />
+            <column-instance column='[Year (Cleaned_MOBILE_TEL_100_norm.csv)]' derivation='None' name='[none:Year (Cleaned_MOBILE_TEL_100_norm.csv):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Mobile Telephone Lines]' derivation='Sum' name='[sum:Mobile Telephone Lines:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name1)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_CDBC4DA49BEF42538E04F43DE1ACA770]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' />
+              <groupfilter function='level-members' level='[Country Name]' />
+            </groupfilter>
+          </filter>
+          <filter class='quantitative' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Mobile Telephone Lines:qk]' included-values='non-null' />
+          <slices>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Mobile Telephone Lines:qk]</column>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name1)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Year (Cleaned_MOBILE_TEL_100_norm.csv):qk]' field-type='quantitative' max='2023' min='1990' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name (Cleaned_MOBILE_TEL_100_norm.csv):nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Mobile Telephone Lines:qk]</rows>
+        <cols>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Year (Cleaned_MOBILE_TEL_100_norm.csv):qk]</cols>
+      </table>
+      <simple-id uuid='{2FADDBBC-E9C4-4417-9CF1-C26B57BEE80C}' />
+    </worksheet>
+    <worksheet name='Sheet 6'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{F96FA1C7-FAF6-4551-BC7B-D40CFF694708}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='Dashboard 1'>
+      <style />
+      <size maxheight='1060' maxwidth='1550' minheight='560' minwidth='420' sizing-mode='range' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98148' id='7' param='horz' type-v2='layout-flow' w='98872' x='564' y='926'>
+            <zone h='98148' id='5' type-v2='layout-basic' w='87596' x='564' y='926'>
+              <zone h='98148' id='3' name='Individuals using the Internet (% of population)' w='43797' x='564' y='926'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='49072' id='11' name='Fixed line subscriptions (per 100 people)' w='43799' x='44361' y='926'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='49076' id='13' name='Mobile cellular subscriptions (per 100 people)' w='43799' x='44361' y='49998'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='98148' id='6' is-fixed='true' param='vert' type-v2='layout-flow' w='11276' x='88160' y='926'>
+              <zone h='16898' id='8' name='Individuals using the Internet (% of population)' pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk]' type-v2='color' w='11276' x='88160' y='926'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='950' minheight='950' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='26' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98148' id='25' param='vert' type-v2='layout-flow' w='98872' x='564' y='926'>
+                <zone fixed-size='280' h='98148' id='3' is-fixed='true' name='Individuals using the Internet (% of population)' w='43797' x='564' y='926'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='16898' id='8' name='Individuals using the Internet (% of population)' pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk]' type-v2='color' w='11276' x='88160' y='926'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49072' id='11' is-fixed='true' name='Fixed line subscriptions (per 100 people)' w='43799' x='44361' y='926'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49076' id='13' is-fixed='true' name='Mobile cellular subscriptions (per 100 people)' w='43799' x='44361' y='49998'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{77EEF34A-42CF-4FD6-9CD0-8D524E257B38}' />
+    </dashboard>
+    <dashboard enable-sort-zone-taborder='true' name='Dashboard 2'>
+      <style />
+      <size maxheight='860' maxwidth='1450' minheight='560' minwidth='420' sizing-mode='range' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98140' id='7' param='horz' type-v2='layout-flow' w='98896' x='552' y='930'>
+            <zone h='98140' id='5' type-v2='layout-basic' w='59172' x='552' y='930'>
+              <zone h='34598' id='3' name='Individuals using the Internet (% of population)' w='59172' x='552' y='64472'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='28948' id='9' name='Fixed line subscriptions (per 100 people)' w='59172' x='552' y='930'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='34594' id='11' name='Mobile cellular subscriptions (per 100 people)' w='59172' x='552' y='29878'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='576' h='98140' id='6' is-fixed='true' param='vert' type-v2='layout-flow' w='39724' x='59724' y='930'>
+              <zone h='27093' id='16' layout-strategy-id='distribute-evenly' param='horz' type-v2='layout-flow' w='39724' x='59724' y='930'>
+                <zone h='27093' id='15' name='Legend' w='19862' x='59724' y='930'>
+                  <layout-cache fixed-size-h='178' fixed-size-w='162' type-h='fixed' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='27093' id='17' param='C:/Users/JP/Downloads/LOgomeli.png' type-v2='bitmap' w='19862' x='79586' y='930'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='background-color' value='#e9edf5aa' />
+                </zone-style>
+              </zone>
+              <zone h='63489' id='13' name='Map Penetracion internet 2022' w='39724' x='59724' y='28023'>
+                <layout-cache minheight='244' minwidth='202' type-h='scalable' type-w='scalable' />
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='7558' id='14' name='Map Penetracion internet 2022' pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Internet Usage (%):qk]' type-v2='color' w='39724' x='59724' y='91512'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone h='7326' id='24' type-v2='text' w='18552' x='44759' y='465'>
+          <formatted-text>
+            <run>MELI&#10;</run>
+          </formatted-text>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1750' minheight='1750' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='30' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98140' id='29' param='vert' type-v2='layout-flow' w='98896' x='552' y='930'>
+                <zone h='7326' id='24' type-v2='text' w='18552' x='44759' y='465'>
+                  <formatted-text>
+                    <run>MELI&#10;</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='241' h='28948' id='9' is-fixed='true' name='Fixed line subscriptions (per 100 people)' w='59172' x='552' y='930'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='225' h='27093' id='15' is-fixed='true' name='Legend' w='19862' x='59724' y='930'>
+                  <layout-cache fixed-size-h='184' fixed-size-w='162' type-h='fixed' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='225' h='27093' id='17' is-fixed='true' param='C:/Users/JP/Downloads/LOgomeli.png' type-v2='bitmap' w='19862' x='79586' y='930'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='63489' id='13' is-fixed='true' name='Map Penetracion internet 2022' w='39724' x='59724' y='28023'>
+                  <layout-cache minheight='244' minwidth='202' type-h='scalable' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7558' id='14' name='Map Penetracion internet 2022' pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Internet Usage (%):qk]' type-v2='color' w='39724' x='59724' y='91512'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='34594' id='11' is-fixed='true' name='Mobile cellular subscriptions (per 100 people)' w='59172' x='552' y='29878'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='34598' id='3' is-fixed='true' name='Individuals using the Internet (% of population)' w='59172' x='552' y='64472'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{66A8E69D-87EE-43CD-A3A8-A07310DC40FF}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='worksheet' name='Individuals using the Internet (% of population)'>
+      <cards>
+        <edge name='left'>
+          <strip size='300'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{D90742A3-C6B3-4A9A-B5AC-AEFF4C3570C1}' />
+    </window>
+    <window class='worksheet' name='Fixed line subscriptions (per 100 people)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name (Cleaned_FIXED_TEL_100_norm.csv):nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{6AC1C2A4-AF59-444F-989D-6DC327A4E75E}' />
+    </window>
+    <window class='worksheet' name='Mobile cellular subscriptions (per 100 people)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name (Cleaned_MOBILE_TEL_100_norm.csv):nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{244A6B86-AEF3-451A-B9E6-23F03DAB66A5}' />
+    </window>
+    <window class='worksheet' name='Map Penetracion internet 2022'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Internet Usage (%):qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{05B469C2-C259-4A60-9B13-F0818230AA38}' />
+    </window>
+    <window class='worksheet' name='Legend'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{9C98FC08-DA92-4CDA-B8C2-E569BA15701D}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Dashboard 2'>
+      <viewpoints>
+        <viewpoint name='Fixed line subscriptions (per 100 people)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Individuals using the Internet (% of population)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Legend' />
+        <viewpoint name='Map Penetracion internet 2022'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Mobile cellular subscriptions (per 100 people)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='15' />
+      <simple-id uuid='{72034256-0A40-493F-9646-659016883ACD}' />
+    </window>
+    <window class='dashboard' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Fixed line subscriptions (per 100 people)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Individuals using the Internet (% of population)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Mobile cellular subscriptions (per 100 people)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='3' />
+      <simple-id uuid='{33F100CB-F969-4FB7-8E1B-8DB9C270517F}' />
+    </window>
+    <window class='worksheet' name='Sheet 6'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{25CE8E4B-6CE6-44D3-A5D8-2F18E72E1C20}' />
+    </window>
+  </windows>
+</workbook>

@@ -1,1 +1,98 @@
-https://api.mercadolibre.com/items/MLA1476074197 
+import requests
+import json
+import csv
+from time import sleep
+
+# Lista de términos de búsqueda para dispositivos de streaming
+search_terms = [
+    'chromecast',
+    'google home',
+    'apple tv',
+    'amazon fire tv'
+]
+
+# Función para obtener IDs de productos
+def get_product_ids(search_term, limit=50):
+    url = f'https://api.mercadolibre.com/sites/MLA/search?q={search_term}&limit={limit}'
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        data = response.json()
+        return [item['id'] for item in data['results']]
+    else:
+        print(f"Error al obtener datos para {search_term}: {response.status_code}")
+        return []
+
+# Función para obtener detalles de un producto
+def get_item_details(item_id):
+    url = f'https://api.mercadolibre.com/items/{item_id}'
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"Error al obtener detalles para ID {item_id}: {response.status_code}")
+        return None
+
+# Función para extraer atributos específicos del producto
+def extract_attributes(item):
+    if not item:
+        return None
+    
+    return {
+        'id': item.get('id'),
+        'title': item.get('title'),
+        'category_id': item.get('category_id'),
+        'price': item.get('price'),
+        'currency_id': item.get('currency_id'),
+        'available_quantity': item.get('available_quantity'),
+        'sold_quantity': item.get('sold_quantity'),
+        'condition': item.get('condition'),
+        'listing_type_id': item.get('listing_type_id'),
+        'seller_id': item.get('seller_id'),
+        'shipping_free': item.get('shipping', {}).get('free_shipping', False),
+        'warranty': item.get('warranty'),
+        'catalog_listing': item.get('catalog_listing', False),
+        'status': item.get('status')
+    }
+
+# Diccionario para almacenar los IDs por término de búsqueda
+all_product_ids = {}
+
+# Obtener IDs para cada término de búsqueda
+for term in search_terms:
+    ids = get_product_ids(term)
+    all_product_ids[term] = ids
+    print(f"Se encontraron {len(ids)} productos para '{term}'")
+
+# Guardar los resultados en un archivo JSON
+with open('product_ids.json', 'w') as f:
+    json.dump(all_product_ids, f, indent=4)
+
+print("\nLos IDs han sido guardados en 'product_ids.json'")
+
+# Procesar cada producto y guardar en CSV
+csv_fields = ['search_term', 'id', 'title', 'category_id', 'price', 'currency_id', 
+              'available_quantity', 'sold_quantity', 'condition', 'listing_type_id',
+              'seller_id', 'shipping_free', 'warranty', 'catalog_listing', 'status']
+
+with open('productos_ml.csv', 'w', newline='', encoding='utf-8') as csvfile:
+    writer = csv.DictWriter(csvfile, fieldnames=csv_fields)
+    writer.writeheader()
+    
+    for term, ids in all_product_ids.items():
+        print(f"\nProcesando productos de '{term}'...")
+        for item_id in ids:
+            # Agregar un pequeño delay para no sobrecargar la API
+            sleep(0.5)
+            
+            details = get_item_details(item_id)
+            if details:
+                item_data = extract_attributes(details)
+                if item_data:
+                    # Agregar el término de búsqueda al diccionario
+                    item_data['search_term'] = term
+                    writer.writerow(item_data)
+                    print(f"Producto {item_id} procesado correctamente")
+
+print("\nTodos los productos han sido procesados y guardados en 'productos_ml.csv'") 
