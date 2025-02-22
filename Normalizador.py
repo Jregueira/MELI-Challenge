@@ -1,25 +1,48 @@
 import pandas as pd
+import os
+
+# Add this after your imports
+if not os.path.exists("CSV CLEAN"):
+    os.makedirs("CSV CLEAN")
 
 # Function to clean up a given CSV file and add new rows for the average metric
 # of all countries except Argentina under the country name "Rest of Latam"
 def clean_csv(input_file, output_file, selected_countries, metric):
     # Load the dataset, skipping the first 4 rows
-    
     df = pd.read_csv(input_file, skiprows=4)
     df.columns = df.columns.str.strip()  # Strip column names
+    
+    # Print columns to debug
+    print(f"Columns in {input_file}:")
+    print(df.columns.tolist())
+    
+    # Map common country column names
+    country_col = None
+    possible_country_cols = ['Country Name', 'Country', 'CountryName', 'Nation', 'Country/Region']
+    
+    for col in possible_country_cols:
+        if col in df.columns:
+            country_col = col
+            break
+    
+    if country_col is None:
+        raise ValueError(f"Could not find country column in {input_file}. Available columns: {df.columns.tolist()}")
 
-    # Filter rows for the selected countries (e.g., ["Argentina", "Uruguay", "Chile"])
-    df_filtered = df[df["Country Name"].isin(selected_countries)]
+    # Filter rows for the selected countries using the found column name
+    df_filtered = df[df[country_col].isin(selected_countries)]
     
     # Drop unwanted columns
     df_filtered = df_filtered.drop(columns=["Indicator Name", "Indicator Code", "Unnamed: 68"], errors="ignore")
     
-    # Reshape the dataframe: melt so that each row corresponds to a country and year with the metric value
+    # Reshape the dataframe using the found country column
     df_melted = df_filtered.melt(
-        id_vars=["Country Name", "Country Code"],
+        id_vars=[country_col, "Country Code"],
         var_name="Year",
         value_name=metric
     )
+    
+    # Rename the country column to standardize it
+    df_melted = df_melted.rename(columns={country_col: "Country Name"})
     
     # Convert "Year" to numeric and sort the dataframe by Year
     df_melted["Year"] = pd.to_numeric(df_melted["Year"], errors="coerce")
@@ -55,22 +78,22 @@ def clean_csv(input_file, output_file, selected_countries, metric):
 # Clean the fixed telephone dataset
 clean_csv(
     input_file = "RawFiles/FIXED_TEL_100.csv", 
-    output_file = "Cleaned_FIXED_TEL_100_test.csv" , 
+    output_file = "Cleaned_FIXED_TEL_100_norm.csv",
     selected_countries=["Argentina", "Uruguay", "Chile", "Bolivia", "Paraguay", "Brasil"], 
-    metric="Internet Usage"
+    metric="Fixed Telephone Lines"  # Changed metric name to match data
+)
+
+# Clean the mobile telephone dataset
+clean_csv(
+    input_file = "RawFiles/MOBILE_TEL_100.csv",  # Added .csv extension
+    output_file = "Cleaned_MOBILE_TEL_100_norm.csv",
+    selected_countries=["Argentina", "Uruguay", "Chile", "Bolivia", "Paraguay", "Brasil"], 
+    metric="Mobile Telephone Lines"  # Changed metric name to match data
 )
 
 clean_csv(
-    input_file = "RawFiles/MOBILE_TEL_100", 
-    output_file = "Cleaned_MOBILE_TEL_100_test.csv" , 
+    input_file = "RawFiles/API_IT.NET.USER.ZS_DS2_en_csv_v2_76190.csv",  # Added .csv extension
+    output_file = "Cleaned_NET.USER_norm.csv",
     selected_countries=["Argentina", "Uruguay", "Chile", "Bolivia", "Paraguay", "Brasil"], 
-    metric="Internet Usage"
+    metric="Internet Usage (%)"  # Changed metric name to match data
 )
-
-clean_csv(
-    input_file = "RawFiles/FIXED_TEL_100", 
-    output_file = "Cleaned_FIXED_TEL_100_test.csv" , 
-    selected_countries=["Argentina", "Uruguay", "Chile", "Bolivia", "Paraguay", "Brasil"], 
-    metric="Internet Usage (%)"
-)
-
