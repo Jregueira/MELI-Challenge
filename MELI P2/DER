@@ -1,0 +1,24 @@
+
+from graphviz import Digraph
+
+# Crear el diagrama de entidades y relaciones (DER)
+der = Digraph('DER_Ecommerce', format='png')
+
+# Definir los nodos de las entidades
+der.node('Customer', 'Customer\n(id, email, nombre, apellido,\nsexo, dirección, fecha_nacimiento,\nteléfono, etc.)', shape='rectangle')
+der.node('Item', 'Item\n(id, nombre, estado, precio,\nfecha_publicacion, category_id, seller_id)', shape='rectangle')
+der.node('Category', 'Category\n(id, descripcion, path)', shape='rectangle')
+der.node('Order', 'Order\n(id, buyer_id, order_date)', shape='rectangle')
+der.node('Order_Item', 'Order_Item\n(order_id, item_id, quantity, unit_price)', shape='rectangle')
+
+# Definir relaciones
+der.edge('Customer', 'Item', label='vende', arrowhead='none')
+der.edge('Customer', 'Order', label='realiza', arrowhead='none')
+der.edge('Item', 'Category', label='pertenece a', arrowhead='none')
+der.edge('Order', 'Order_Item', label='contiene', arrowhead='none')
+der.edge('Item', 'Order_Item', label='es parte de', arrowhead='none')
+
+# Generar el diagrama
+der_path = "/mnt/data/DER_Ecommerce.png"
+der.render(der_path, format='png', cleanup=True)
+der_path

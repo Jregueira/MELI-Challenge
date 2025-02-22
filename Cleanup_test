@@ -1,0 +1,40 @@
+import pandas as pd
+
+# Function to clean up a given CSV file
+def clean_csv(input_file, output_file, selected_countries, metric):
+    # Load the dataset
+    df = pd.read_csv(input_file)
+    df.columns = df.columns.str.strip()  # Strip column names
+    
+    
+    #filter countries
+     # Add more countries if needed
+    df_filtered = df[df["Country Name"].isin(selected_countries)]
+
+
+    df_filtered = df_filtered.drop(columns=["Indicator Name", "Indicator Code", "Unnamed: 68"], errors="ignore")
+    
+    df_argentina_melted = df_filtered.melt(id_vars=["Country Name", "Country Code"], 
+                                        var_name="Year", value_name=f"{metric}")
+
+    # Convert "Year" to numeric
+    df_argentina_melted["Year"] = pd.to_numeric(df_argentina_melted["Year"], errors="coerce")
+
+    # Sort by year
+    df_argentina_melted = df_argentina_melted.sort_values(by="Year")
+
+    # Display first rows
+    print(df_argentina_melted.head())
+    print(df_argentina_melted)
+
+
+    #Save the cleaned dataset 
+    df_argentina_melted.to_csv(f"CSV CLEAN/{output_file}", index=True,  sep = ";")
+
+# Define file paths
+fixed_tel_input = "FIXED_TEL_100.csv"
+fixed_tel_output = "CSV_CLEAN/Cleaned_FIXED_TEL_100.csv"
+
+
+# Clean the fixed telephone dataset
+clean_csv(fixed_tel_input, fixed_tel_output,  selected_countries = ["Argentina", "Uruguay", "Chile"])  # Adjust drop columns as needed
