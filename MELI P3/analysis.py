@@ -63,6 +63,8 @@ def analyze_streaming_devices():
         plt.savefig('price_ranges.png')
         plt.close()
 
+        
+
     # Run all analyses
     get_product_stats()
     analyze_conditions()
