@@ -1,0 +1,26 @@
+Evolución de la Penetración de Internet
+
+El gráfico de la parte superior izquierda muestra cómo ha ido creciendo el porcentaje de individuos que utilizan internet en Argentina (y otros países de la región) a lo largo de los años.
+Se observa un crecimiento sostenido desde inicios de la década del 2000, impulsado en parte por la mejora en la infraestructura de telecomunicaciones y el aumento de la oferta de planes de datos.
+A partir de 2010, la pendiente de crecimiento se vuelve menos pronunciada, lo que sugiere que la penetración de internet comienza a acercarse a una fase de madurez. Es decir, la mayoría de la población que puede y desea acceder a internet ya lo hace, y la tasa de nuevos usuarios anuales se desacelera.
+
+Relación con las Suscripciones de Telefonía Móvil
+El gráfico de la parte inferior izquierdo (suscripciones de telefonía móvil por cada 100 habitantes) sigue una tendencia muy similar a la de la penetración de internet. Esto refuerza la correlación entre la adopción de dispositivos móviles y el acceso a internet, especialmente considerando la masificación de los smartphones.
+Al igual que en el caso de la penetración de internet, se aprecia que alrededor de 2010 la tasa de crecimiento de las suscripciones móviles también comienza a desacelerarse, señal de que el mercado se va saturando y cada vez hay menos “nuevos” usuarios que no tengan un teléfono móvil.
+
+Comparativa Regional y Tasas Interanuales (YoY)
+En la tabla de la parte inferior se muestran las tasas de crecimiento interanual (YoY) tanto de suscripciones móviles como de penetración de internet para varios países de la región.
+Argentina mantiene un crecimiento moderado, en línea con el promedio regional.
+Países como Chile o Uruguay presentan tasas similares o ligeramente superiores en penetración de internet  lo que indica que, si bien Argentina sigue aumentando su conectividad, existen otros mercados con una expansión aún más rápida en términos de uso de internet.
+En el caso de suscripciones móviles, Bolivia y el “Resto de Latam” muestran crecimientos interanuales un poco mayores lo que podría reflejar un proceso de expansión más acelerado en mercados emergentes donde todavía no se ha alcanzado la saturación.
+
+Mapa de Penetración de Internet en Latinoamérica (2022)
+El mapa ilustra el nivel de penetración de internet en distintos países de la región para 2022. Argentina se mantiene en un rango alto de adopción, aunque cercanas a ella se encuentran economías como Chile y Uruguay, tradicionalmente líderes en la región en conectividad.
+Esta visual refuerza la idea de que, pese a la desaceleración, Argentina continúa con un nivel de penetración de internet sólido en el contexto latinoamericano.
+Conclusiones Principales
+
+Madurez del mercado: Tanto la penetración de internet como las suscripciones móviles muestran un crecimiento constante pero con una clara desaceleración a partir de 2010, lo que sugiere que el mercado se acerca a la madurez.
+Correlación entre internet y telefonía móvil: El acceso a internet en Argentina está fuertemente vinculado a la telefonía móvil, reflejando la tendencia global de que el smartphone es la principal vía de conexión.
+Comparativa regional: Argentina se ubica en un nivel intermedio-alto de penetración y crecimiento en relación con sus vecinos. Sin embargo, algunos países de la región exhiben un mayor dinamismo, lo cual se traduce en oportunidades y retos para la adopción de nuevas tecnologías en el mercado argentino.
+Perspectivas futuras: A medida que la penetración se estabilice, los esfuerzos podrían orientarse más hacia la mejora de la calidad de la conexión, la velocidad de internet y la inclusión digital de sectores aún rezagados, en lugar de la pura captación de nuevos usuarios.
+En resumen, el dashboard evidencia el crecimiento sostenido de la penetración de internet en Argentina y la estrecha relación con el aumento de suscripciones de telefonía móvil, destacando la desaceleración natural en mercados que se acercan a la saturación y mostrando cómo el país se compara con el resto de Latinoamérica en términos de conectividad.

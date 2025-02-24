@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8' ?>
 
 <!-- build 20243.24.1010.1014                               -->
-<workbook original-version='18.1' source-build='2024.3.0 (20243.24.1010.1014)' source-platform='win' version='18.1' xml:base='https://localhost' xmlns:user='http://www.tableausoftware.com/xml/user'>
+<workbook original-version='18.1' source-build='2024.3.0 (20243.24.1010.1014)' source-platform='win' version='18.1' xml:base='https://public.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
     <AccessibleZoneTabOrder />
     <AnimationOnByDefault />
@@ -17,8 +17,9 @@
     <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
     <WindowsPersistSimpleIdentifiers />
     <WorksheetBackgroundTransparency />
+    <ZoneBackgroundTransparency />
   </document-format-change-manifest>
-  <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/MeliChallengeWB?rev=1.3' id='MeliChallengeWB' path='/workbooks' revision='1.3' />
+  <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/MeliChallengeWB?rev=1.3' id='MeliChallengeWB_Final' path='/workbooks' revision='1.6' />
   <preferences>
     <preference name='ui.encoding.shelf.height' value='24' />
     <preference name='ui.shelf.height' value='26' />
@@ -342,9 +343,20 @@
         </metadata-records>
       </connection>
       <aliases enabled='yes' />
+      <column datatype='string' name='[:Measure Names]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:Calculation_2241103815192498179:qk]&quot;' value='YoY Internet Delta %' />
+          <alias key='&quot;[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:YoY Internet \% (copy)_2241103815194755079:qk]&quot;' value='YoY Mobile Subscriptions' />
+        </aliases>
+      </column>
       <column caption='YoY Internet %' datatype='real' name='[Calculation_2241103815192498179]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='IF LOOKUP(SUM([Internet Usage (%)]), -1) != 0 THEN &#13;&#10;   (SUM([Internet Usage (%)]) - LOOKUP(SUM([Internet Usage (%)]), -1)) / LOOKUP(SUM([Internet Usage (%)]), -1)* 100&#13;&#10;END'>
           <table-calc level-address='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]' ordering-field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Year]' ordering-type='Field' />
+        </calculation>
+      </column>
+      <column caption='Growth Icon' datatype='string' name='[Calculation_2241103815201595400]' role='measure' type='nominal'>
+        <calculation class='tableau' formula='IF ([Calculation_2241103815192498179]) &gt; 0 THEN &quot;▲&quot;&#13;&#10;END'>
+          <table-calc ordering-type='Rows' />
         </calculation>
       </column>
       <column caption='Country Code (Cleaned FIXED TEL 100 norm.csv)' datatype='string' name='[Country Code (Cleaned_FIXED_TEL_100_norm.csv)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
@@ -355,6 +367,11 @@
       <column datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
       <column caption='F1 (Cleaned FIXED TEL 100 norm.csv)' datatype='integer' name='[F1 (Cleaned_FIXED_TEL_100_norm.csv)]' role='measure' type='quantitative' />
       <column caption='F1 (Cleaned MOBILE TEL 100 norm.csv)' datatype='integer' name='[F1 (Cleaned_MOBILE_TEL_100_norm.csv)]' role='measure' type='quantitative' />
+      <column caption='Growth Icon (copy)' datatype='string' name='[Growth Icon (copy)_2241103815224565769]' role='measure' type='nominal'>
+        <calculation class='tableau' formula='IF ([YoY Internet % (copy)_2241103815194755079]) &gt; 0 THEN &quot;▲&quot;&#13;&#10;END'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
       <column datatype='real' datatype-customized='true' name='[Internet Usage (%)]' role='measure' type='quantitative' />
       <column caption='Year (Cleaned FIXED TEL 100 norm.csv)' datatype='date' name='[Year (Cleaned_FIXED_TEL_100_norm.csv)]' role='dimension' type='quantitative' />
       <column caption='Year (Cleaned MOBILE TEL 100 norm.csv)' datatype='date' name='[Year (Cleaned_MOBILE_TEL_100_norm.csv)]' role='dimension' type='quantitative' />
@@ -370,6 +387,16 @@
       <column-instance column='[Country Name (Cleaned_FIXED_TEL_100_norm.csv)]' derivation='None' name='[none:Country Name (Cleaned_FIXED_TEL_100_norm.csv):nk]' pivot='key' type='nominal' />
       <column-instance column='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' derivation='None' name='[none:Country Name (Cleaned_MOBILE_TEL_100_norm.csv):nk]' pivot='key' type='nominal' />
       <column-instance column='[Country Name]' derivation='None' name='[none:Country Name:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Calculation_2241103815192498179]' derivation='User' name='[usr:Calculation_2241103815192498179:qk]' pivot='key' type='quantitative'>
+        <table-calc level-address='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]' ordering-field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Year]' ordering-type='Field' />
+      </column-instance>
+      <column-instance column='[Calculation_2241103815201595400]' derivation='User' name='[usr:Calculation_2241103815201595400:nk:1]' pivot='key' type='nominal'>
+        <table-calc ordering-type='Rows' />
+        <table-calc field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Calculation_2241103815192498179]' level-address='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]' ordering-field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Year]' ordering-type='Field' />
+      </column-instance>
+      <column-instance column='[YoY Internet % (copy)_2241103815194755079]' derivation='User' name='[usr:YoY Internet % (copy)_2241103815194755079:qk]' pivot='key' type='quantitative'>
+        <table-calc level-address='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]' ordering-field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Year]' ordering-type='Field' />
+      </column-instance>
       <column-instance column='[Year]' derivation='Year' name='[yr:Year:ok]' pivot='key' type='ordinal' />
       <group caption='Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name)' hidden='true' name='[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name)]' name-style='unqualified' user:auto-column='sheet_link'>
         <groupfilter function='crossjoin'>
@@ -388,6 +415,12 @@
           <groupfilter function='level-members' level='[Country Name]' />
         </groupfilter>
       </group>
+      <group caption='Action (Country Name,YEAR(Year))' hidden='true' name='[Action (Country Name,YEAR(Year))]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Country Name]' />
+          <groupfilter function='level-members' level='[yr:Year:ok]' />
+        </groupfilter>
+      </group>
       <group caption='Action (Country Name1)' hidden='true' name='[Action (Country Name1)]' name-style='unqualified' user:auto-column='sheet_link'>
         <groupfilter function='crossjoin'>
           <groupfilter function='level-members' level='[Country Name]' />
@@ -400,7 +433,7 @@
         </groupfilter>
       </group>
       <extract _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' object-id='' units='records'>
-        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='Data/TableauTemp/#TableauTemp_1lsyk6o07qpxrz11ydpzm0dpsn1v.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='02/24/2025 03:53:00 AM' username=''>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='Data/TableauTemp/#TableauTemp_1lsyk6o07qpxrz11ydpzm0dpsn1v.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='' username=''>
           <relation type='collection'>
             <relation name='Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84' table='[Extract].[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]' type='table' />
             <relation name='Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D' table='[Extract].[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]' type='table' />
@@ -436,7 +469,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>384</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>Country Name</remote-name>
@@ -451,7 +483,6 @@
               <approx-count>6</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LES_RES' />
-              <object-id>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>Country Code</remote-name>
@@ -466,7 +497,6 @@
               <approx-count>6</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LES_RES' />
-              <object-id>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>Year</remote-name>
@@ -480,7 +510,6 @@
               <aggregation>Year</aggregation>
               <approx-count>64</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>Internet Usage (%)</remote-name>
@@ -494,7 +523,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>181</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[Cleaned_NET.USER_norm.csv_19847CDF87984B2B9A185F22BB2D2D84]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>F1</remote-name>
@@ -508,7 +536,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>384</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>Country Name</remote-name>
@@ -523,7 +550,6 @@
               <approx-count>6</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LES_RES' />
-              <object-id>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>Country Code</remote-name>
@@ -538,7 +564,6 @@
               <approx-count>6</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LES_RES' />
-              <object-id>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>Year</remote-name>
@@ -552,7 +577,6 @@
               <aggregation>Year</aggregation>
               <approx-count>64</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>Fixed Telephone Lines</remote-name>
@@ -566,7 +590,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>297</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[Cleaned_FIXED_TEL_100_norm.csv_EAFB64DD4EEF4AB6BA6ED3FA4C7CD16D]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>F1</remote-name>
@@ -580,7 +603,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>384</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>Country Name</remote-name>
@@ -595,7 +617,6 @@
               <approx-count>6</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LES_RES' />
-              <object-id>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>Country Code</remote-name>
@@ -610,7 +631,6 @@
               <approx-count>6</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LES_RES' />
-              <object-id>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>Year</remote-name>
@@ -624,7 +644,6 @@
               <aggregation>Year</aggregation>
               <approx-count>64</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</object-id>
             </metadata-record>
             <metadata-record class='column'>
               <remote-name>Mobile Telephone Lines</remote-name>
@@ -638,7 +657,6 @@
               <aggregation>Sum</aggregation>
               <approx-count>197</approx-count>
               <contains-null>true</contains-null>
-              <object-id>[Cleaned_MOBILE_TEL_100_norm.csv_B7DA82237438467DBC39E148243B98F7]</object-id>
             </metadata-record>
           </metadata-records>
         </connection>
@@ -646,6 +664,14 @@
       <layout dim-ordering='alphabetic' measure-ordering='alphabetic' rowDisplayCount='384' show-structure='true' />
       <style>
         <style-rule element='mark'>
+          <encoding attr='color' field='[usr:Calculation_2241103815201595400:nk:1]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>%null%</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;▲&quot;</bucket>
+            </map>
+          </encoding>
           <encoding attr='color' field='[none:Country Name (Cleaned_FIXED_TEL_100_norm.csv):nk]' type='palette'>
             <map to='#4e79a7'>
               <bucket>&quot;Argentina&quot;</bucket>
@@ -666,7 +692,7 @@
               <bucket>&quot;Bolivia&quot;</bucket>
             </map>
           </encoding>
-          <encoding attr='color' field='[none:Country Name (Cleaned_MOBILE_TEL_100_norm.csv):nk]' type='palette'>
+          <encoding attr='color' field='[none:Country Name:nk]' type='palette'>
             <map to='#4e79a7'>
               <bucket>&quot;Argentina&quot;</bucket>
             </map>
@@ -686,7 +712,7 @@
               <bucket>&quot;Bolivia&quot;</bucket>
             </map>
           </encoding>
-          <encoding attr='color' field='[none:Country Name:nk]' type='palette'>
+          <encoding attr='color' field='[none:Country Name (Cleaned_MOBILE_TEL_100_norm.csv):nk]' type='palette'>
             <map to='#4e79a7'>
               <bucket>&quot;Argentina&quot;</bucket>
             </map>
@@ -800,12 +826,44 @@
     <mapsource name='Tableau' />
   </mapsources>
   <actions>
-    <action caption='Filter 2 (generated)' name='[Action2_B877FF24A8F34E9DBBF2BCF0BCAB1305]'>
+    <action caption='Filter 1 (generated)' name='[Action2_6FE1DDEE781748B89E1FCCD28644AA8B]'>
       <activation auto-clear='true' type='on-select' />
-      <source dashboard='Internet Penetration Analisis Argentina' type='sheet' worksheet='Map Penetracion internet 2022' />
+      <source dashboard='Internet Penetration Analisis Argentina  BETA' type='sheet' worksheet='Legend' />
       <command command='tsc:tsl-filter'>
         <param name='special-fields' value='all' />
-        <param name='target' value='Internet Penetration Analisis Argentina' />
+        <param name='target' value='Internet Penetration Analisis Argentina  BETA' />
+      </command>
+    </action>
+    <action caption='Filter 2 (generated)' name='[Action2_B877FF24A8F34E9DBBF2BCF0BCAB1305]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Internet Penetration Analisis Argentina  BETA' type='sheet' worksheet='Internet Penetration Map Latam 2022' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Internet Penetration Analisis Argentina  BETA' />
+      </command>
+    </action>
+    <action caption='Filter 3 (generated)' name='[Action3_25610815C6F44B46A104947466D08781]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Internet Penetration Analisis Argentina  BETA' type='sheet' worksheet='YoY % Internet Penetration' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Internet Penetration Analisis Argentina  BETA' />
+      </command>
+    </action>
+    <action caption='Filter 4 (generated)' name='[Action4_EC0DA1C20097420D84A5A7E0D4CC9017]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Internet Penetration Analisis Argentina  BETA' type='sheet' worksheet='YoY  Mobile Subs' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Internet Penetration Analisis Argentina  BETA' />
+      </command>
+    </action>
+    <action caption='Filter 5 (generated)' name='[Action5_B86573D17B97427F86DF0FC066754D67]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Internet Penetration Analisis Argentina ' type='sheet' worksheet='Legend' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Internet Penetration Analisis Argentina ' />
       </command>
     </action>
   </actions>
@@ -901,6 +959,7 @@
             <column-instance column='[Internet Usage (%)]' derivation='None' name='[none:Internet Usage (%):qk]' pivot='key' type='quantitative' />
             <column-instance column='[Year]' derivation='None' name='[none:Year:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Internet Usage (%)]' derivation='Sum' name='[sum:Internet Usage (%):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Year]' derivation='Year' name='[yr:Year:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name)]'>
             <groupfilter function='crossjoin' user:ui-action-filter='[Action1_CDBC4DA49BEF42538E04F43DE1ACA770]' user:ui-enumeration='all' user:ui-marker='enumerate'>
@@ -915,7 +974,13 @@
             </groupfilter>
           </filter>
           <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name)]'>
-            <groupfilter function='level-members' level='[Country Name]' user:ui-action-filter='[Action2_B877FF24A8F34E9DBBF2BCF0BCAB1305]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[Country Name]' member='&quot;Argentina&quot;' user:ui-action-filter='[Action2_B877FF24A8F34E9DBBF2BCF0BCAB1305]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name,YEAR(Year))]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action4_EC0DA1C20097420D84A5A7E0D4CC9017]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Country Name]' />
+              <groupfilter function='level-members' level='[yr:Year:ok]' />
+            </groupfilter>
           </filter>
           <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name1)]'>
             <groupfilter function='level-members' level='[Country Name]' user:ui-action-filter='[Action2_B877FF24A8F34E9DBBF2BCF0BCAB1305]' user:ui-enumeration='all' user:ui-marker='enumerate' />
@@ -927,6 +992,7 @@
             <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name1)]</column>
             <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name)]</column>
             <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name)]</column>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name,YEAR(Year))]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -1031,6 +1097,85 @@
       </table>
       <simple-id uuid='{1901C9B5-8936-4FE9-807C-4EEC3D6B3589}' />
     </worksheet>
+    <worksheet lock-quick-filters='true' name='Internet Penetration Map Latam 2022'>
+      <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/MeliChallengeWB/MapPenetracioninternet2022?rev=' id='112633569' path='/workbooks/MeliChallengeWB' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Cleaned_API_IT.NET.USER' name='federated.1vkvqyh12a0xdq10etmx51ayv9ki' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.1vkvqyh12a0xdq10etmx51ayv9ki'>
+            <column caption='Country Name (Cleaned MOBILE TEL 100 norm.csv)' datatype='string' name='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='real' datatype-customized='true' name='[Internet Usage (%)]' role='measure' type='quantitative' />
+            <column datatype='date' datatype-customized='true' name='[Year]' role='dimension' type='ordinal' />
+            <column-instance column='[Internet Usage (%)]' derivation='Attribute' name='[attr:Internet Usage (%):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Country Name]' derivation='None' name='[none:Country Name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Year]' derivation='Year' name='[yr:Year:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_CDBC4DA49BEF42538E04F43DE1ACA770]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' />
+              <groupfilter function='level-members' level='[Country Name]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name1)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_CDBC4DA49BEF42538E04F43DE1ACA770]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' />
+              <groupfilter function='level-members' level='[Country Name]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name)]'>
+            <groupfilter function='member' level='[Country Name]' member='&quot;Argentina&quot;' user:ui-action-filter='[Action1_CDBC4DA49BEF42538E04F43DE1ACA770]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name,YEAR(Year))]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action8_AFB2564A3CAA4E88B32C1429B69D6949]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Country Name]' />
+              <groupfilter function='level-members' level='[yr:Year:ok]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]'>
+            <groupfilter function='member' level='[yr:Year:ok]' member='2022' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name1)]</column>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name)]</column>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name)]</column>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]</column>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name,YEAR(Year))]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Longitude (generated)]' field-type='quantitative' max='-4026516.8606538996' min='-10956336.786252821' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Latitude (generated)]' field-type='quantitative' max='-2031478.1719540944' min='-8606236.6555209123' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk]' />
+              <color column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[attr:Internet Usage (%):qk]' />
+              <geometry column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Geometry (generated)]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Latitude (generated)]</rows>
+        <cols>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Longitude (generated)]</cols>
+      </table>
+      <simple-id uuid='{5705ABAE-D9B1-4813-8E3B-E4C7176B4DB1}' />
+    </worksheet>
     <worksheet name='Legend'>
       <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/MeliChallengeWB/Legend?rev=' id='112633570' path='/workbooks/MeliChallengeWB' revision='' />
       <table>
@@ -1043,10 +1188,18 @@
           </mapsources>
           <datasource-dependencies datasource='federated.1vkvqyh12a0xdq10etmx51ayv9ki'>
             <column datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='date' datatype-customized='true' name='[Year]' role='dimension' type='ordinal' />
             <column-instance column='[Country Name]' derivation='None' name='[none:Country Name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Year]' derivation='Year' name='[yr:Year:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name)]'>
             <groupfilter function='level-members' level='[Country Name]' user:ui-action-filter='[Action2_B877FF24A8F34E9DBBF2BCF0BCAB1305]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name,YEAR(Year))]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action4_EC0DA1C20097420D84A5A7E0D4CC9017]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Country Name]' />
+              <groupfilter function='level-members' level='[yr:Year:ok]' />
+            </groupfilter>
           </filter>
           <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name1)]'>
             <groupfilter function='level-members' level='[Country Name]' user:ui-action-filter='[Action2_B877FF24A8F34E9DBBF2BCF0BCAB1305]' user:ui-enumeration='all' user:ui-marker='enumerate' />
@@ -1054,6 +1207,7 @@
           <slices>
             <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name1)]</column>
             <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name)]</column>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name,YEAR(Year))]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -1101,23 +1255,22 @@
       </table>
       <simple-id uuid='{86F49B6C-9D2A-4EE3-B2FE-E264AA8255EF}' />
     </worksheet>
-    <worksheet name='Map Penetracion internet 2022'>
-      <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/MeliChallengeWB/MapPenetracioninternet2022?rev=' id='112633569' path='/workbooks/MeliChallengeWB' revision='' />
+    <worksheet name='Mobile cellular subscriptions (per 100 people)'>
+      <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/MeliChallengeWB/Mobilecellularsubscriptionsper100people?rev=' id='112633568' path='/workbooks/MeliChallengeWB' revision='' />
       <table>
         <view>
           <datasources>
             <datasource caption='Cleaned_API_IT.NET.USER' name='federated.1vkvqyh12a0xdq10etmx51ayv9ki' />
           </datasources>
-          <mapsources>
-            <mapsource name='Tableau' />
-          </mapsources>
           <datasource-dependencies datasource='federated.1vkvqyh12a0xdq10etmx51ayv9ki'>
             <column caption='Country Name (Cleaned MOBILE TEL 100 norm.csv)' datatype='string' name='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
             <column datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
-            <column datatype='real' datatype-customized='true' name='[Internet Usage (%)]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Mobile Telephone Lines]' role='measure' type='quantitative' />
+            <column caption='Year (Cleaned MOBILE TEL 100 norm.csv)' datatype='date' name='[Year (Cleaned_MOBILE_TEL_100_norm.csv)]' role='dimension' type='quantitative' />
             <column datatype='date' datatype-customized='true' name='[Year]' role='dimension' type='ordinal' />
-            <column-instance column='[Country Name]' derivation='None' name='[none:Country Name:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Internet Usage (%)]' derivation='Sum' name='[sum:Internet Usage (%):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' derivation='None' name='[none:Country Name (Cleaned_MOBILE_TEL_100_norm.csv):nk]' pivot='key' type='nominal' />
+            <column-instance column='[Year (Cleaned_MOBILE_TEL_100_norm.csv)]' derivation='None' name='[none:Year (Cleaned_MOBILE_TEL_100_norm.csv):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Mobile Telephone Lines]' derivation='Sum' name='[sum:Mobile Telephone Lines:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Year]' derivation='Year' name='[yr:Year:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name)]'>
@@ -1133,76 +1286,13 @@
             </groupfilter>
           </filter>
           <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name)]'>
-            <groupfilter function='level-members' level='[Country Name]' user:ui-action-filter='[Action1_CDBC4DA49BEF42538E04F43DE1ACA770]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[Country Name]' member='&quot;Argentina&quot;' user:ui-action-filter='[Action2_B877FF24A8F34E9DBBF2BCF0BCAB1305]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
-          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]'>
-            <groupfilter function='member' level='[yr:Year:ok]' member='2022' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
-          </filter>
-          <slices>
-            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]</column>
-            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name1)]</column>
-            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name)]</column>
-            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name)]</column>
-          </slices>
-          <aggregation value='true' />
-        </view>
-        <style>
-          <style-rule element='axis'>
-            <encoding attr='space' class='0' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Longitude (generated)]' field-type='quantitative' max='-3039311.7590005789' min='-11302947.634693826' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
-            <encoding attr='space' class='0' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Latitude (generated)]' field-type='quantitative' max='-550982.38330111839' min='-7400909.9677526131' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
-          </style-rule>
-          <style-rule element='map'>
-            <format attr='washout' value='0.0' />
-          </style-rule>
-        </style>
-        <panes>
-          <pane selection-relaxation-option='selection-relaxation-allow'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Automatic' />
-            <encodings>
-              <lod column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk]' />
-              <color column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Internet Usage (%):qk]' />
-              <geometry column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Geometry (generated)]' />
-            </encodings>
-          </pane>
-        </panes>
-        <rows>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Latitude (generated)]</rows>
-        <cols>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Longitude (generated)]</cols>
-      </table>
-      <simple-id uuid='{5705ABAE-D9B1-4813-8E3B-E4C7176B4DB1}' />
-    </worksheet>
-    <worksheet name='Mobile cellular subscriptions (per 100 people)'>
-      <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/MeliChallengeWB/Mobilecellularsubscriptionsper100people?rev=' id='112633568' path='/workbooks/MeliChallengeWB' revision='' />
-      <table>
-        <view>
-          <datasources>
-            <datasource caption='Cleaned_API_IT.NET.USER' name='federated.1vkvqyh12a0xdq10etmx51ayv9ki' />
-          </datasources>
-          <datasource-dependencies datasource='federated.1vkvqyh12a0xdq10etmx51ayv9ki'>
-            <column caption='Country Name (Cleaned MOBILE TEL 100 norm.csv)' datatype='string' name='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
-            <column datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
-            <column datatype='real' name='[Mobile Telephone Lines]' role='measure' type='quantitative' />
-            <column caption='Year (Cleaned MOBILE TEL 100 norm.csv)' datatype='date' name='[Year (Cleaned_MOBILE_TEL_100_norm.csv)]' role='dimension' type='quantitative' />
-            <column-instance column='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' derivation='None' name='[none:Country Name (Cleaned_MOBILE_TEL_100_norm.csv):nk]' pivot='key' type='nominal' />
-            <column-instance column='[Year (Cleaned_MOBILE_TEL_100_norm.csv)]' derivation='None' name='[none:Year (Cleaned_MOBILE_TEL_100_norm.csv):qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Mobile Telephone Lines]' derivation='Sum' name='[sum:Mobile Telephone Lines:qk]' pivot='key' type='quantitative' />
-          </datasource-dependencies>
-          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name)]'>
-            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_CDBC4DA49BEF42538E04F43DE1ACA770]' user:ui-enumeration='all' user:ui-marker='enumerate'>
-              <groupfilter function='level-members' level='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' />
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name,YEAR(Year))]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action4_EC0DA1C20097420D84A5A7E0D4CC9017]' user:ui-enumeration='all' user:ui-marker='enumerate'>
               <groupfilter function='level-members' level='[Country Name]' />
+              <groupfilter function='level-members' level='[yr:Year:ok]' />
             </groupfilter>
-          </filter>
-          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name1)]'>
-            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_CDBC4DA49BEF42538E04F43DE1ACA770]' user:ui-enumeration='all' user:ui-marker='enumerate'>
-              <groupfilter function='level-members' level='[Country Name (Cleaned_MOBILE_TEL_100_norm.csv)]' />
-              <groupfilter function='level-members' level='[Country Name]' />
-            </groupfilter>
-          </filter>
-          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name)]'>
-            <groupfilter function='level-members' level='[Country Name]' user:ui-action-filter='[Action2_B877FF24A8F34E9DBBF2BCF0BCAB1305]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name1)]'>
             <groupfilter function='level-members' level='[Country Name]' user:ui-action-filter='[Action2_B877FF24A8F34E9DBBF2BCF0BCAB1305]' user:ui-enumeration='all' user:ui-marker='enumerate' />
@@ -1214,6 +1304,7 @@
             <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name1)]</column>
             <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name (Cleaned MOBILE TEL 100 norm.csv),Country Name)]</column>
             <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name)]</column>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name,YEAR(Year))]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -1237,6 +1328,99 @@
         <cols>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Year (Cleaned_MOBILE_TEL_100_norm.csv):qk]</cols>
       </table>
       <simple-id uuid='{2FADDBBC-E9C4-4417-9CF1-C26B57BEE80C}' />
+    </worksheet>
+    <worksheet name='YoY  Mobile Subs'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Cleaned_API_IT.NET.USER' name='federated.1vkvqyh12a0xdq10etmx51ayv9ki' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1vkvqyh12a0xdq10etmx51ayv9ki'>
+            <column datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column caption='Growth Icon (copy)' datatype='string' name='[Growth Icon (copy)_2241103815224565769]' role='measure' type='nominal'>
+              <calculation class='tableau' formula='IF ([YoY Internet % (copy)_2241103815194755079]) &gt; 0 THEN &quot;▲&quot;&#13;&#10;END'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column datatype='real' name='[Mobile Telephone Lines]' role='measure' type='quantitative' />
+            <column datatype='date' datatype-customized='true' name='[Year]' role='dimension' type='ordinal' />
+            <column caption='YoY Mobile' datatype='real' name='[YoY Internet % (copy)_2241103815194755079]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF LOOKUP(SUM([Mobile Telephone Lines]), -1) != 0 THEN &#13;&#10;   (SUM([Mobile Telephone Lines]) - LOOKUP(SUM([Mobile Telephone Lines]), -1)) / LOOKUP(SUM([Mobile Telephone Lines]), -1)* 100&#13;&#10;END'>
+                <table-calc level-address='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]' ordering-field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Year]' ordering-type='Field' />
+              </calculation>
+            </column>
+            <column-instance column='[Country Name]' derivation='None' name='[none:Country Name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Year]' derivation='None' name='[none:Year:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Growth Icon (copy)_2241103815224565769]' derivation='User' name='[usr:Growth Icon (copy)_2241103815224565769:nk:1]' pivot='key' type='nominal'>
+              <table-calc ordering-type='Rows' />
+              <table-calc field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[YoY Internet % (copy)_2241103815194755079]' level-address='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]' ordering-field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Year]' ordering-type='Field' />
+            </column-instance>
+            <column-instance column='[YoY Internet % (copy)_2241103815194755079]' derivation='User' name='[usr:YoY Internet % (copy)_2241103815194755079:qk]' pivot='key' type='quantitative'>
+              <table-calc level-address='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]' ordering-field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Year]' ordering-type='Field' />
+            </column-instance>
+            <column-instance column='[Year]' derivation='Year' name='[yr:Year:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name)]'>
+            <groupfilter function='member' level='[Country Name]' member='&quot;Argentina&quot;' user:ui-action-filter='[Action2_6FE1DDEE781748B89E1FCCD28644AA8B]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name,YEAR(Year))]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action3_25610815C6F44B46A104947466D08781]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Country Name]' />
+              <groupfilter function='level-members' level='[yr:Year:ok]' />
+            </groupfilter>
+          </filter>
+          <filter class='quantitative' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Year:qk]' included-values='in-range'>
+            <min>#2021-01-01#</min>
+            <max>#2022-01-01#</max>
+          </filter>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]' kind='hide'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[yr:Year:ok]' />
+              <groupfilter function='member' level='[yr:Year:ok]' member='2021' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Year:qk]</column>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name)]</column>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name,YEAR(Year))]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:YoY Internet % (copy)_2241103815194755079:qk]' />
+              <text column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:Growth Icon (copy)_2241103815224565769:nk:1]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run>&lt;</run>
+                <run>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:YoY Internet % (copy)_2241103815194755079:qk]</run>
+                <run>&gt;   &lt;</run>
+                <run>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:Growth Icon (copy)_2241103815224565769:nk:1]</run>
+                <run>&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk]</rows>
+        <cols>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]</cols>
+      </table>
+      <simple-id uuid='{2E70FD3E-914B-4736-9716-83B506858111}' />
     </worksheet>
     <worksheet name='YoY % Inertenet Penetration'>
       <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/MeliChallengeWB/Var?rev=' id='112641197' path='/workbooks/MeliChallengeWB' revision='' />
@@ -1265,6 +1449,9 @@
             </column-instance>
             <column-instance column='[Year]' derivation='Year' name='[yr:Year:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name)]'>
+            <groupfilter function='level-members' level='[Country Name]' user:ui-action-filter='[Action2_6FE1DDEE781748B89E1FCCD28644AA8B]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
           <filter class='quantitative' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Year:qk]' included-values='in-range'>
             <min>#2021-01-01#</min>
             <max>#2022-01-01#</max>
@@ -1273,12 +1460,16 @@
           <slices>
             <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:Calculation_2241103815192498179:qk:1]</column>
             <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Year:qk]</column>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name)]</column>
           </slices>
           <aggregation value='true' />
         </view>
         <style>
           <style-rule element='cell'>
             <format attr='width' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk]' value='125' />
+            <format attr='text-align' data-class='subtotal' scope='cols' value='center' />
+            <format attr='text-align' data-class='subtotal' scope='rows' value='center' />
+            <format attr='text-align' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:Calculation_2241103815192498179:qk:1]' value='center' />
           </style-rule>
           <style-rule element='header'>
             <format attr='border-width' data-class='total' scope='cols' value='0' />
@@ -1286,6 +1477,13 @@
             <format attr='border-width' data-class='subtotal' scope='cols' value='0' />
             <format attr='border-style' data-class='subtotal' scope='cols' value='none' />
             <format attr='band-color' scope='rows' value='#00000000' />
+            <format attr='border-width' data-class='subtotal' scope='rows' value='0' />
+            <format attr='border-style' data-class='subtotal' scope='rows' value='none' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-align' scope='rows' value='center' />
+            <format attr='text-align' scope='cols' value='center' />
+            <format attr='vertical-align' scope='rows' value='center' />
           </style-rule>
           <style-rule element='mark'>
             <encoding attr='size-bar' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:Calculation_2241103815192498179:qk:1]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
@@ -1294,13 +1492,20 @@
             <format attr='border-width' data-class='subtotal' scope='cols' value='0' />
             <format attr='border-style' data-class='subtotal' scope='cols' value='none' />
             <format attr='band-color' scope='rows' value='#00000000' />
+            <format attr='border-width' data-class='subtotal' scope='rows' value='0' />
+            <format attr='border-style' data-class='subtotal' scope='rows' value='none' />
           </style-rule>
           <style-rule element='table'>
             <format attr='band-size' scope='rows' value='1' />
+            <format attr='background-color' value='#00000000' />
           </style-rule>
           <style-rule element='worksheet'>
             <format attr='display-field-labels' scope='rows' value='false' />
             <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
           </style-rule>
           <style-rule element='table-div'>
             <format attr='stroke-size' scope='cols' value='0' />
@@ -1317,8 +1522,16 @@
             </view>
             <mark class='Square' />
             <encodings>
+              <color column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:Calculation_2241103815192498179:qk:1]' />
               <text column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:Calculation_2241103815192498179:qk:1]' />
             </encodings>
+            <customized-label>
+              <formatted-text>
+                <run>&lt;</run>
+                <run>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:Calculation_2241103815192498179:qk:1]</run>
+                <run>&gt;</run>
+              </formatted-text>
+            </customized-label>
             <style>
               <style-rule element='mark'>
                 <format attr='mark-labels-show' value='true' />
@@ -1344,28 +1557,46 @@
       </table>
       <simple-id uuid='{F96FA1C7-FAF6-4551-BC7B-D40CFF694708}' />
     </worksheet>
-    <worksheet name='YoY % Mobile Subs'>
+    <worksheet name='YoY % Internet Penetration'>
       <table>
         <view>
           <datasources>
             <datasource caption='Cleaned_API_IT.NET.USER' name='federated.1vkvqyh12a0xdq10etmx51ayv9ki' />
           </datasources>
           <datasource-dependencies datasource='federated.1vkvqyh12a0xdq10etmx51ayv9ki'>
-            <column datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
-            <column datatype='real' name='[Mobile Telephone Lines]' role='measure' type='quantitative' />
-            <column datatype='date' datatype-customized='true' name='[Year]' role='dimension' type='ordinal' />
-            <column caption='YoY Mobile' datatype='real' name='[YoY Internet % (copy)_2241103815194755079]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='IF LOOKUP(SUM([Mobile Telephone Lines]), -1) != 0 THEN &#13;&#10;   (SUM([Mobile Telephone Lines]) - LOOKUP(SUM([Mobile Telephone Lines]), -1)) / LOOKUP(SUM([Mobile Telephone Lines]), -1)* 100&#13;&#10;END'>
+            <column caption='YoY Internet %' datatype='real' name='[Calculation_2241103815192498179]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF LOOKUP(SUM([Internet Usage (%)]), -1) != 0 THEN &#13;&#10;   (SUM([Internet Usage (%)]) - LOOKUP(SUM([Internet Usage (%)]), -1)) / LOOKUP(SUM([Internet Usage (%)]), -1)* 100&#13;&#10;END'>
                 <table-calc level-address='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]' ordering-field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Year]' ordering-type='Field' />
               </calculation>
             </column>
+            <column caption='Growth Icon' datatype='string' name='[Calculation_2241103815201595400]' role='measure' type='nominal'>
+              <calculation class='tableau' formula='IF ([Calculation_2241103815192498179]) &gt; 0 THEN &quot;▲&quot;&#13;&#10;END'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='real' datatype-customized='true' name='[Internet Usage (%)]' role='measure' type='quantitative' />
+            <column datatype='date' datatype-customized='true' name='[Year]' role='dimension' type='ordinal' />
             <column-instance column='[Country Name]' derivation='None' name='[none:Country Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Year]' derivation='None' name='[none:Year:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[YoY Internet % (copy)_2241103815194755079]' derivation='User' name='[usr:YoY Internet % (copy)_2241103815194755079:qk]' pivot='key' type='quantitative'>
+            <column-instance column='[Calculation_2241103815192498179]' derivation='User' name='[usr:Calculation_2241103815192498179:qk]' pivot='key' type='quantitative'>
               <table-calc level-address='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]' ordering-field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Year]' ordering-type='Field' />
+            </column-instance>
+            <column-instance column='[Calculation_2241103815201595400]' derivation='User' name='[usr:Calculation_2241103815201595400:nk:1]' pivot='key' type='nominal'>
+              <table-calc ordering-type='Rows' />
+              <table-calc field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Calculation_2241103815192498179]' level-address='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]' ordering-field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Year]' ordering-type='Field' />
             </column-instance>
             <column-instance column='[Year]' derivation='Year' name='[yr:Year:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name)]'>
+            <groupfilter function='member' level='[Country Name]' member='&quot;Argentina&quot;' user:ui-action-filter='[Action2_6FE1DDEE781748B89E1FCCD28644AA8B]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name,YEAR(Year))]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action4_EC0DA1C20097420D84A5A7E0D4CC9017]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Country Name]' />
+              <groupfilter function='level-members' level='[yr:Year:ok]' />
+            </groupfilter>
+          </filter>
           <filter class='quantitative' column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Year:qk]' included-values='in-range'>
             <min>#2021-01-01#</min>
             <max>#2022-01-01#</max>
@@ -1378,16 +1609,12 @@
           </filter>
           <slices>
             <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Year:qk]</column>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name)]</column>
+            <column>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[Action (Country Name,YEAR(Year))]</column>
           </slices>
           <aggregation value='true' />
         </view>
         <style>
-          <style-rule element='cell'>
-            <format attr='width' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk]' value='126' />
-          </style-rule>
-          <style-rule element='mark'>
-            <encoding attr='size-bar' field='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:YoY Internet % (copy)_2241103815194755079:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
-          </style-rule>
           <style-rule element='worksheet'>
             <format attr='display-field-labels' scope='cols' value='false' />
           </style-rule>
@@ -1397,35 +1624,31 @@
             <view>
               <breakdown value='auto' />
             </view>
-            <mark class='Square' />
+            <mark class='Automatic' />
             <encodings>
-              <color column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:YoY Internet % (copy)_2241103815194755079:qk]' />
-              <text column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:YoY Internet % (copy)_2241103815194755079:qk]' />
+              <text column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:Calculation_2241103815192498179:qk]' />
+              <text column='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:Calculation_2241103815201595400:nk:1]' />
             </encodings>
+            <customized-label>
+              <formatted-text>
+                <run>&lt;</run>
+                <run>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:Calculation_2241103815192498179:qk]</run>
+                <run>&gt; &lt;</run>
+                <run>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:Calculation_2241103815201595400:nk:1]</run>
+                <run>&gt;</run>
+              </formatted-text>
+            </customized-label>
             <style>
               <style-rule element='mark'>
-                <format attr='has-stroke' value='false' />
                 <format attr='mark-labels-show' value='true' />
-                <format attr='mark-labels-cull' value='true' />
-                <format attr='mark-labels-line-first' value='true' />
-                <format attr='mark-labels-line-last' value='true' />
-                <format attr='mark-labels-range-min' value='true' />
-                <format attr='mark-labels-range-max' value='true' />
-                <format attr='mark-labels-mode' value='all' />
-                <format attr='mark-labels-range-scope' value='pane' />
-                <format attr='mark-labels-range-field' value='' />
-              </style-rule>
-              <style-rule element='pane'>
-                <format attr='minwidth' value='-1' />
-                <format attr='maxwidth' value='-1' />
               </style-rule>
             </style>
           </pane>
         </panes>
-        <rows />
-        <cols>([federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok] / [federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk])</cols>
+        <rows>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk]</rows>
+        <cols>[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]</cols>
       </table>
-      <simple-id uuid='{2E70FD3E-914B-4736-9716-83B506858111}' />
+      <simple-id uuid='{E033237E-A5C1-4909-8FE5-9DBEF8B3358E}' />
     </worksheet>
   </worksheets>
   <dashboards>
@@ -1485,8 +1708,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='950' minheight='950' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='42' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98150' id='41' param='vert' type-v2='layout-flow' w='98968' x='516' y='925'>
+            <zone h='100000' id='72' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98150' id='71' param='vert' type-v2='layout-flow' w='98968' x='516' y='925'>
                 <zone fixed-size='280' h='98150' id='3' is-fixed='true' name='Individuals using the Internet (% of population)' w='44319' x='516' y='925'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -1536,7 +1759,419 @@
       </devicelayouts>
       <simple-id uuid='{77EEF34A-42CF-4FD6-9CD0-8D524E257B38}' />
     </dashboard>
-    <dashboard enable-sort-zone-taborder='true' name='Internet Penetration Analisis Argentina'>
+    <dashboard enable-sort-zone-taborder='true' name='Dashboard 3'>
+      <style />
+      <size maxheight='860' maxwidth='650' minheight='560' minwidth='420' />
+      <datasources>
+        <datasource caption='Cleaned_API_IT.NET.USER' name='federated.1vkvqyh12a0xdq10etmx51ayv9ki' />
+      </datasources>
+      <datasource-dependencies datasource='federated.1vkvqyh12a0xdq10etmx51ayv9ki'>
+        <column datatype='date' datatype-customized='true' name='[Year]' role='dimension' type='ordinal' />
+        <column-instance column='[Year]' derivation='Year' name='[yr:Year:ok]' pivot='key' type='ordinal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98140' id='3' param='vert' type-v2='layout-flow' w='48769' x='1231' y='930'>
+            <zone h='27442' id='7' name='Internet Penetration Map Latam 2022' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]' type-v2='filter' w='48769' x='1231' y='930'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='26279' id='14' name='Individuals using the Internet (% of population)' w='48769' x='1231' y='28372'>
+              <layout-cache minheight='226' type-h='scalable' type-w='fixed' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='27442' id='11' param='horz' type-v2='layout-flow' w='48769' x='1231' y='54651'>
+              <zone h='27442' id='12' name='YoY % Internet Penetration' w='25692' x='1231' y='54651'>
+                <layout-cache fixed-size-h='240' fixed-size-w='159' type-h='fixed' type-w='fixed' />
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='27442' id='13' name='YoY  Mobile Subs' w='23077' x='26923' y='54651'>
+                <layout-cache fixed-size-h='212' fixed-size-w='142' type-h='fixed' type-w='fixed' />
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone h='16977' id='15' name='Individuals using the Internet (% of population)' pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk]' type-v2='color' w='48769' x='1231' y='82093'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+          <zone h='98140' id='5' param='vert' type-v2='layout-flow' w='48769' x='50000' y='930'>
+            <zone fixed-size='308' h='35814' id='9' is-fixed='true' param='horz' type-v2='layout-flow' w='48769' x='50000' y='930'>
+              <zone h='22093' id='10' name='Legend' w='48769' x='50000' y='930'>
+                <layout-cache fixed-size-h='182' fixed-size-w='182' type-h='fixed' type-w='fixed' />
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone h='54768' id='6' name='Internet Penetration Map Latam 2022' w='48769' x='50000' y='36744'>
+              <layout-cache minheight='272' type-h='scalable' type-w='fixed' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='7558' id='8' name='Internet Penetration Map Latam 2022' pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[attr:Internet Usage (%):qk]' type-v2='color' w='48769' x='50000' y='91512'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1400' minheight='1400' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='27' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98140' id='26' param='vert' type-v2='layout-flow' w='97538' x='1231' y='930'>
+                <zone fixed-size='182' h='22093' id='10' is-fixed='true' name='Legend' w='48769' x='50000' y='930'>
+                  <layout-cache fixed-size-h='182' fixed-size-w='182' type-h='fixed' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='218' h='26279' id='14' is-fixed='true' name='Individuals using the Internet (% of population)' w='48769' x='1231' y='28372'>
+                  <layout-cache minheight='226' type-h='scalable' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='16977' id='15' name='Individuals using the Internet (% of population)' pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk]' type-v2='color' w='48769' x='1231' y='82093'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='27442' id='7' mode='checkdropdown' name='Internet Penetration Map Latam 2022' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]' type-v2='filter' w='48769' x='1231' y='930'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='54768' id='6' is-fixed='true' name='Internet Penetration Map Latam 2022' w='48769' x='50000' y='36744'>
+                  <layout-cache minheight='272' type-h='scalable' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7558' id='8' name='Internet Penetration Map Latam 2022' pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[attr:Internet Usage (%):qk]' type-v2='color' w='48769' x='50000' y='91512'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='228' h='27442' id='12' is-fixed='true' name='YoY % Internet Penetration' w='25692' x='1231' y='54651'>
+                  <layout-cache fixed-size-h='240' fixed-size-w='159' type-h='fixed' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='228' h='27442' id='13' is-fixed='true' name='YoY  Mobile Subs' w='23077' x='26923' y='54651'>
+                  <layout-cache fixed-size-h='212' fixed-size-w='142' type-h='fixed' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{C511A4C3-EEA5-41BF-9BC4-0B1C745136B5}' />
+    </dashboard>
+    <dashboard enable-sort-zone-taborder='true' name='Internet Penetration Analisis Argentina '>
+      <style />
+      <size maxheight='860' maxwidth='1450' minheight='560' minwidth='420' sizing-mode='range' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98140' id='106' param='horz' type-v2='layout-flow' w='98896' x='552' y='930'>
+            <zone h='98140' id='102' param='horz' type-v2='layout-flow' w='98896' x='552' y='930'>
+              <zone h='98140' id='98' param='horz' type-v2='layout-flow' w='98896' x='552' y='930'>
+                <zone h='98140' id='88' param='horz' type-v2='layout-flow' w='98896' x='552' y='930'>
+                  <zone h='98140' id='84' param='horz' type-v2='layout-flow' w='59241' x='552' y='930'>
+                    <zone h='98140' id='36' param='vert' type-v2='layout-flow' w='59241' x='552' y='930'>
+                      <zone h='4883' id='37' type-v2='title' w='59241' x='552' y='930'>
+                        <zone-style>
+                          <format attr='border-color' value='#000000' />
+                          <format attr='border-style' value='none' />
+                          <format attr='border-width' value='0' />
+                          <format attr='margin' value='4' />
+                        </zone-style>
+                      </zone>
+                      <zone h='93257' id='85' param='vert' type-v2='layout-flow' w='59241' x='552' y='5813'>
+                        <zone h='32501' id='86' name='Individuals using the Internet (% of population)' w='59241' x='552' y='5813'>
+                          <layout-cache minheight='198' minwidth='159' type-h='scalable' type-w='scalable' />
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                          </zone-style>
+                        </zone>
+                        <zone h='32501' id='90' name='Mobile cellular subscriptions (per 100 people)' w='59241' x='552' y='38314'>
+                          <layout-cache minheight='198' minwidth='159' type-h='scalable' type-w='scalable' />
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                          </zone-style>
+                        </zone>
+                        <zone h='28254' id='93' param='horz' type-v2='layout-flow' w='59241' x='552' y='70815'>
+                          <zone h='28254' id='94' name='YoY  Mobile Subs' w='29620' x='552' y='70815'>
+                            <layout-cache cell-count-h='6' cell-count-w='1' non-cell-size-h='63' non-cell-size-w='101' type-h='cell' type-w='cell' />
+                            <zone-style>
+                              <format attr='border-color' value='#000000' />
+                              <format attr='border-style' value='none' />
+                              <format attr='border-width' value='0' />
+                              <format attr='margin' value='4' />
+                            </zone-style>
+                          </zone>
+                          <zone h='28254' id='95' name='YoY % Internet Penetration' w='29620' x='30172' y='70815'>
+                            <layout-cache cell-count-h='6' cell-count-w='1' non-cell-size-h='63' non-cell-size-w='101' type-h='cell' type-w='cell' />
+                            <zone-style>
+                              <format attr='border-color' value='#000000' />
+                              <format attr='border-style' value='none' />
+                              <format attr='border-width' value='0' />
+                              <format attr='margin' value='4' />
+                            </zone-style>
+                          </zone>
+                        </zone>
+                      </zone>
+                    </zone>
+                  </zone>
+                  <zone fixed-size='575' h='98140' id='87' is-fixed='true' param='vert' type-v2='layout-flow' w='39655' x='59793' y='930'>
+                    <zone fixed-size='218' h='25349' id='92' is-fixed='true' param='horz' type-v2='layout-flow' w='39655' x='59793' y='930'>
+                      <zone h='25349' id='99' param='horz' type-v2='layout-flow' w='39655' x='59793' y='930'>
+                        <zone h='25349' id='100' name='Legend' w='13104' x='59793' y='930'>
+                          <layout-cache fixed-size-h='182' fixed-size-w='182' type-h='fixed' type-w='fixed' />
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                          </zone-style>
+                        </zone>
+                        <zone h='25349' id='109' is-scaled='1' param='Image/MercadoLibre.png' type-v2='bitmap' w='26551' x='72897' y='930'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                          </zone-style>
+                        </zone>
+                      </zone>
+                    </zone>
+                    <zone h='65233' id='104' name='Internet Penetration Map Latam 2022' w='39655' x='59793' y='26279'>
+                      <layout-cache minheight='244' minwidth='202' type-h='scalable' type-w='scalable' />
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin' value='4' />
+                      </zone-style>
+                    </zone>
+                    <zone h='7558' id='108' name='Internet Penetration Map Latam 2022' pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[attr:Internet Usage (%):qk]' type-v2='color' w='39655' x='59793' y='91512'>
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin' value='4' />
+                      </zone-style>
+                    </zone>
+                  </zone>
+                </zone>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1950' minheight='1950' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='121' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98140' id='120' param='vert' type-v2='layout-flow' w='98896' x='552' y='930'>
+                <zone h='4883' id='37' type-v2='title' w='59241' x='552' y='930'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='210' h='25349' id='100' is-fixed='true' name='Legend' w='13104' x='59793' y='930'>
+                  <layout-cache fixed-size-h='182' fixed-size-w='182' type-h='fixed' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='210' h='25349' id='109' is-fixed='true' is-scaled='1' param='Image/MercadoLibre.png' type-v2='bitmap' w='26551' x='72897' y='930'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='272' h='32501' id='86' is-fixed='true' name='Individuals using the Internet (% of population)' w='59241' x='552' y='5813'>
+                  <layout-cache minheight='198' minwidth='159' type-h='scalable' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='65233' id='104' is-fixed='true' name='Internet Penetration Map Latam 2022' w='39655' x='59793' y='26279'>
+                  <layout-cache minheight='244' minwidth='202' type-h='scalable' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7558' id='108' name='Internet Penetration Map Latam 2022' pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[attr:Internet Usage (%):qk]' type-v2='color' w='39655' x='59793' y='91512'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='272' h='32501' id='90' is-fixed='true' name='Mobile cellular subscriptions (per 100 people)' w='59241' x='552' y='38314'>
+                  <layout-cache minheight='198' minwidth='159' type-h='scalable' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='235' h='28254' id='94' is-fixed='true' name='YoY  Mobile Subs' w='29620' x='552' y='70815'>
+                  <layout-cache cell-count-h='6' cell-count-w='1' non-cell-size-h='63' non-cell-size-w='101' type-h='cell' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='235' h='28254' id='95' is-fixed='true' name='YoY % Internet Penetration' w='29620' x='30172' y='70815'>
+                  <layout-cache cell-count-h='6' cell-count-w='1' non-cell-size-h='63' non-cell-size-w='101' type-h='cell' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{4381556E-D761-4AA1-9393-DE679545FE1A}' />
+    </dashboard>
+    <dashboard enable-sort-zone-taborder='true' name='Internet Penetration Analisis Argentina  BETA'>
       <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/MeliChallengeWB/InternetPenetrationAnalisisArgentina?rev=' id='112651166' path='/workbooks/MeliChallengeWB' revision='' />
       <style />
       <size maxheight='860' maxwidth='1450' minheight='560' minwidth='420' sizing-mode='range' />
@@ -1552,9 +2187,9 @@
               </zone-style>
             </zone>
             <zone fixed-size='247' h='28721' id='45' is-fixed='true' param='vert' type-v2='layout-flow' w='98896' x='552' y='5813'>
-              <zone h='26047' id='58' param='horz' type-v2='layout-flow' w='98896' x='552' y='5813'>
-                <zone h='26047' id='59' name='Legend' w='13104' x='552' y='5813'>
-                  <layout-cache fixed-size-h='182' fixed-size-w='182' type-h='fixed' type-w='fixed' />
+              <zone h='28716' id='58' param='horz' type-v2='layout-flow' w='98896' x='552' y='5813'>
+                <zone fixed-size='254' h='28716' id='59' is-fixed='true' name='Legend' w='18069' x='552' y='5813'>
+                  <layout-cache type-h='fixed' type-w='fixed' />
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1562,9 +2197,9 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='788' h='26047' id='61' is-fixed='true' param='vert' type-v2='layout-flow' w='54345' x='13656' y='5813'>
-                  <zone h='13023' id='55' name='YoY % Inertenet Penetration' w='54345' x='13656' y='5813'>
-                    <layout-cache fixed-size-h='104' fixed-size-w='752' type-h='fixed' type-w='fixed' />
+                <zone fixed-size='960' h='28716' id='61' is-fixed='true' param='horz' type-v2='layout-flow' w='66207' x='18621' y='5813'>
+                  <zone fixed-size='433' h='28716' id='64' is-fixed='true' name='YoY % Internet Penetration' w='30414' x='18621' y='5813'>
+                    <layout-cache type-h='cell' type-w='cell' />
                     <zone-style>
                       <format attr='border-color' value='#000000' />
                       <format attr='border-style' value='none' />
@@ -1572,8 +2207,8 @@
                       <format attr='margin' value='4' />
                     </zone-style>
                   </zone>
-                  <zone h='13023' id='57' name='YoY % Mobile Subs' w='54345' x='13656' y='18836'>
-                    <layout-cache fixed-size-h='104' fixed-size-w='758' type-h='fixed' type-w='fixed' />
+                  <zone h='28716' id='57' name='YoY  Mobile Subs' w='35793' x='49035' y='5813'>
+                    <layout-cache cell-count-w='1' non-cell-size-w='101' type-h='cell' type-w='cell' />
                     <zone-style>
                       <format attr='border-color' value='#000000' />
                       <format attr='border-style' value='none' />
@@ -1586,7 +2221,7 @@
             </zone>
             <zone h='64536' id='7' param='horz' type-v2='layout-flow' w='98896' x='552' y='34534'>
               <zone h='64536' id='5' type-v2='layout-basic' w='59172' x='552' y='34534'>
-                <zone h='31610' id='3' name='Individuals using the Internet (% of population)' w='59172' x='552' y='67460'>
+                <zone h='31611' id='3' name='Individuals using the Internet (% of population)' w='59172' x='552' y='67459'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1594,7 +2229,7 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone h='32926' id='11' name='Mobile cellular subscriptions (per 100 people)' w='59172' x='552' y='34534'>
+                <zone h='32925' id='11' name='Mobile cellular subscriptions (per 100 people)' w='59172' x='552' y='34534'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1604,7 +2239,7 @@
                 </zone>
               </zone>
               <zone fixed-size='576' h='64536' id='6' is-fixed='true' param='vert' type-v2='layout-flow' w='39724' x='59724' y='34534'>
-                <zone h='40001' id='13' name='Map Penetracion internet 2022' w='39724' x='59724' y='34534'>
+                <zone h='56978' id='13' name='Internet Penetration Map Latam 2022' w='39724' x='59724' y='34534'>
                   <layout-cache minheight='244' minwidth='202' type-h='scalable' type-w='scalable' />
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -1613,15 +2248,7 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone h='7558' id='14' name='Map Penetracion internet 2022' pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Internet Usage (%):qk]' type-v2='color' w='39724' x='59724' y='74535'>
-                  <zone-style>
-                    <format attr='border-color' value='#000000' />
-                    <format attr='border-style' value='none' />
-                    <format attr='border-width' value='0' />
-                    <format attr='margin' value='4' />
-                  </zone-style>
-                </zone>
-                <zone h='16977' id='60' name='Legend' pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[none:Country Name:nk]' type-v2='color' w='39724' x='59724' y='82093'>
+                <zone h='7558' id='14' name='Internet Penetration Map Latam 2022' pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[attr:Internet Usage (%):qk]' type-v2='color' w='39724' x='59724' y='91512'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1639,14 +2266,14 @@
             <format attr='margin' value='8' />
           </zone-style>
         </zone>
-        <zone h='24186' id='46' is-centered='0' is-scaled='1' param='Image/MercadoLibre.png' type-v2='bitmap' w='25724' x='71034' y='7442' />
+        <zone h='21047' id='46' is-centered='0' is-scaled='1' param='Image/MercadoLibre 1.png' type-v2='bitmap' w='23379' x='84414' y='3256' />
       </zones>
       <devicelayouts>
         <devicelayout auto-generated='true' name='Phone'>
-          <size maxheight='1450' minheight='1450' sizing-mode='vscroll' />
+          <size maxheight='1950' minheight='1950' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='54' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98140' id='53' param='vert' type-v2='layout-flow' w='98896' x='552' y='930'>
+            <zone h='100000' id='92' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98140' id='91' param='vert' type-v2='layout-flow' w='98896' x='552' y='930'>
                 <zone h='4883' id='37' type-v2='title' w='98896' x='552' y='930'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -1656,7 +2283,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='208' h='24186' id='46' is-centered='0' is-fixed='true' is-scaled='1' param='Image/MercadoLibre.png' type-v2='bitmap' w='25724' x='66621' y='7442'>
+                <zone fixed-size='181' h='21047' id='46' is-centered='0' is-fixed='true' is-scaled='1' param='Image/MercadoLibre 1.png' type-v2='bitmap' w='23379' x='84414' y='3256'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1665,7 +2292,8 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='275' h='32926' id='11' is-fixed='true' name='Mobile cellular subscriptions (per 100 people)' w='59172' x='552' y='34534'>
+                <zone fixed-size='239' h='28716' id='59' is-fixed='true' name='Legend' w='18069' x='552' y='5813'>
+                  <layout-cache fixed-size-h='182' type-h='fixed' type-w='fixed' />
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1674,7 +2302,36 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='280' h='56978' id='13' is-fixed='true' name='Map Penetracion internet 2022' w='39724' x='59724' y='34534'>
+                <zone fixed-size='239' h='28716' id='64' is-fixed='true' name='YoY % Internet Penetration' w='30414' x='18621' y='5813'>
+                  <layout-cache cell-count-h='6' non-cell-size-h='63' type-h='cell' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='239' h='28716' id='57' is-fixed='true' name='YoY  Mobile Subs' w='35793' x='49035' y='5813'>
+                  <layout-cache cell-count-h='6' cell-count-w='1' non-cell-size-h='63' non-cell-size-w='101' type-h='cell' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='275' h='32925' id='11' is-fixed='true' name='Mobile cellular subscriptions (per 100 people)' w='59172' x='552' y='34534'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='56978' id='13' is-fixed='true' name='Internet Penetration Map Latam 2022' w='39724' x='59724' y='34534'>
                   <layout-cache minheight='244' minwidth='202' type-h='scalable' type-w='scalable' />
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -1684,7 +2341,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone h='7558' id='14' name='Map Penetracion internet 2022' pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Internet Usage (%):qk]' type-v2='color' w='39724' x='59724' y='91512'>
+                <zone h='7558' id='14' name='Internet Penetration Map Latam 2022' pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[attr:Internet Usage (%):qk]' type-v2='color' w='39724' x='59724' y='91512'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1693,7 +2350,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='264' h='31610' id='3' is-fixed='true' name='Individuals using the Internet (% of population)' w='59172' x='552' y='67460'>
+                <zone fixed-size='264' h='31611' id='3' is-fixed='true' name='Individuals using the Internet (% of population)' w='59172' x='552' y='67459'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1829,7 +2486,7 @@
       </cards>
       <simple-id uuid='{244A6B86-AEF3-451A-B9E6-23F03DAB66A5}' />
     </window>
-    <window class='worksheet' name='Map Penetracion internet 2022'>
+    <window class='worksheet' name='Internet Penetration Map Latam 2022'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -1851,7 +2508,8 @@
         </edge>
         <edge name='right'>
           <strip size='160'>
-            <card pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[sum:Internet Usage (%):qk]' type='color' />
+            <card param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[yr:Year:ok]' type='filter' />
+            <card pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[attr:Internet Usage (%):qk]' type='color' />
           </strip>
         </edge>
       </cards>
@@ -1885,23 +2543,64 @@
       </cards>
       <simple-id uuid='{9C98FC08-DA92-4CDA-B8C2-E569BA15701D}' />
     </window>
-    <window class='dashboard' name='Internet Penetration Analisis Argentina'>
+    <window class='dashboard' name='Internet Penetration Analisis Argentina  BETA'>
       <viewpoints>
         <viewpoint name='Individuals using the Internet (% of population)'>
           <zoom type='entire-view' />
         </viewpoint>
-        <viewpoint name='Legend' />
-        <viewpoint name='Map Penetracion internet 2022'>
+        <viewpoint name='Internet Penetration Map Latam 2022'>
           <zoom type='entire-view' />
         </viewpoint>
+        <viewpoint name='Legend' />
         <viewpoint name='Mobile cellular subscriptions (per 100 people)'>
           <zoom type='entire-view' />
         </viewpoint>
-        <viewpoint name='YoY % Inertenet Penetration' />
-        <viewpoint name='YoY % Mobile Subs' />
+        <viewpoint name='YoY  Mobile Subs'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='YoY % Internet Penetration'>
+          <zoom type='entire-view' />
+        </viewpoint>
       </viewpoints>
       <active id='-1' />
       <simple-id uuid='{72034256-0A40-493F-9646-659016883ACD}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Internet Penetration Analisis Argentina '>
+      <viewpoints>
+        <viewpoint name='Individuals using the Internet (% of population)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Internet Penetration Map Latam 2022'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Legend' />
+        <viewpoint name='Mobile cellular subscriptions (per 100 people)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='YoY  Mobile Subs'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='YoY % Internet Penetration'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='100' />
+      <simple-id uuid='{A7CB9DC7-29DE-447C-BA09-E2A087B47CDC}' />
+    </window>
+    <window class='dashboard' name='Dashboard 3'>
+      <viewpoints>
+        <viewpoint name='Individuals using the Internet (% of population)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Internet Penetration Map Latam 2022'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Legend' />
+        <viewpoint name='YoY  Mobile Subs' />
+        <viewpoint name='YoY % Internet Penetration' />
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{4E1762CE-31D5-4FF4-A81C-8E18F1530CB6}' />
     </window>
     <window class='dashboard' name='Dashboard 1'>
       <viewpoints>
@@ -1918,7 +2617,7 @@
       <active id='4' />
       <simple-id uuid='{33F100CB-F969-4FB7-8E1B-8DB9C270517F}' />
     </window>
-    <window class='worksheet' maximized='true' name='YoY % Inertenet Penetration'>
+    <window class='worksheet' name='YoY % Inertenet Penetration'>
       <cards>
         <edge name='left'>
           <strip size='230'>
@@ -1938,10 +2637,15 @@
             <card type='title' />
           </strip>
         </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:Calculation_2241103815192498179:qk:1]' type='color' />
+          </strip>
+        </edge>
       </cards>
       <simple-id uuid='{25CE8E4B-6CE6-44D3-A5D8-2F18E72E1C20}' />
     </window>
-    <window class='worksheet' name='YoY % Mobile Subs'>
+    <window class='worksheet' name='YoY  Mobile Subs'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -1961,13 +2665,31 @@
             <card type='title' />
           </strip>
         </edge>
-        <edge name='right'>
+      </cards>
+      <simple-id uuid='{6B58943C-6A40-4E49-83EA-852755893685}' />
+    </window>
+    <window class='worksheet' name='YoY % Internet Penetration'>
+      <cards>
+        <edge name='left'>
           <strip size='160'>
-            <card pane-specification-id='0' param='[federated.1vkvqyh12a0xdq10etmx51ayv9ki].[usr:YoY Internet % (copy)_2241103815194755079:qk]' type='color' />
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
           </strip>
         </edge>
       </cards>
-      <simple-id uuid='{6B58943C-6A40-4E49-83EA-852755893685}' />
+      <simple-id uuid='{2BAD6574-8A90-40FB-88BF-A7FDF07B8E44}' />
     </window>
   </windows>
 </workbook>
