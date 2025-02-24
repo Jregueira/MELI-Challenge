@@ -7,7 +7,7 @@ SELECT DISTINCT
     c.fecha_nacimiento
 FROM Customer c
 INNER JOIN Item i ON i.seller_id = c.customer_id
-INNER JOIN Order_Item oi ON oi.item_id = i.item_id
+INNER JOIN Order_Item oi ON oi.item_id = i.item_id  
 INNER JOIN Order o ON o.order_id = oi.order_id
 WHERE 
     EXTRACT(MONTH FROM c.fecha_nacimiento) = EXTRACT(MONTH FROM CURRENT_DATE)
@@ -15,10 +15,12 @@ WHERE
     AND EXTRACT(MONTH FROM o.order_date) = 1
     AND EXTRACT(YEAR FROM o.order_date) = 2020
 GROUP BY c.customer_id, c.nombre, c.apellido, c.fecha_nacimiento
-HAVING c.apellido,
-    COUNT(DISTINCT o.order_id) > 1500; --Esto puede ser ventas totales (order ID) o unidades en order_item
+HAVING HAVING COUNT(DISTINCT o.order_id) > 1500;    
 
-    
+-- COUNT(DISTINCT o.order_id) > 1500; total de ventas
+--SUM(oi.quantity) > 1500;  total de unidades
+--Esto puede ser ventas totales (order ID) o unidades en order_item
+
 
 
 -- 2. Top 5 vendedores de Celulares por mes en 2020

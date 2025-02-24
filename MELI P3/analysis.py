@@ -39,7 +39,7 @@ def analyze_streaming_devices():
 
     # 3. Warranty analysis
     def analyze_warranty():
-        # Extract warranty duration (assuming format "X meses" or "X días")
+        # Extract warranty duration 
         df['warranty_duration'] = df['warranty'].str.extract('(\d+)').astype(float)
         
         warranty_stats = df.groupby('search_term')['warranty_duration'].agg(['mean', 'median'])
