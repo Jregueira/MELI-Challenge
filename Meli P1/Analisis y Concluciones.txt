@@ -1,4 +1,6 @@
 Evolución de la Penetración de Internet
+Link al dashboard
+https://public.tableau.com/app/profile/juan.regueira/viz/MeliChallengeWB_Final/InternetPenetrationAnalisisArgentina_1?publish=yes
 
 El gráfico de la parte superior izquierda muestra cómo ha ido creciendo el porcentaje de individuos que utilizan internet en Argentina (y otros países de la región) a lo largo de los años.
 Se observa un crecimiento sostenido desde inicios de la década del 2000, impulsado en parte por la mejora en la infraestructura de telecomunicaciones y el aumento de la oferta de planes de datos.
