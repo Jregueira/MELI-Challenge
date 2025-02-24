@@ -31,11 +31,11 @@ CREATE TABLE Item (
 );
 
 -- Order table
-CREATE TABLE "Order" (
+CREATE TABLE Order (
     order_id INT PRIMARY KEY,
-    buyer_id INT NOT NULL,
+    customer_id INT NOT NULL,
     order_date TIMESTAMP NOT NULL,
-    FOREIGN KEY (buyer_id) REFERENCES Customer(customer_id)
+    FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
 );
 
 -- Order_Item table
@@ -45,7 +45,7 @@ CREATE TABLE Order_Item (
     item_id INT NOT NULL,
     quantity INT NOT NULL CHECK (quantity > 0),
     unit_price DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES "Order"(order_id),
+    FOREIGN KEY (order_id) REFERENCES Order(order_id),
     FOREIGN KEY (item_id) REFERENCES Item(item_id)
 ); 
 

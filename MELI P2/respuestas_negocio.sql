@@ -1,4 +1,5 @@
 -- 1. Usuarios que cumplen años hoy con ventas > 1500 en enero 2020
+
 SELECT DISTINCT 
     c.customer_id,
     c.nombre,
@@ -71,6 +72,7 @@ BEGIN
         precio,
         estado,
         CURRENT_DATE
+        
     FROM Item i
     WHERE NOT EXISTS (
         SELECT 1 

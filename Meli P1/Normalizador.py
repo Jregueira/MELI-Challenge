@@ -79,21 +79,20 @@ def clean_csv(input_file, output_file, selected_countries, metric):
 clean_csv(
     input_file = "RawFiles/FIXED_TEL_100.csv", 
     output_file = "Cleaned_FIXED_TEL_100_norm.csv",
-    selected_countries=["Argentina", "Uruguay", "Chile", "Bolivia", "Paraguay", "Brasil"], 
-    metric="Fixed Telephone Lines"  # Changed metric name to match data
+    selected_countries=["Argentina", "Uruguay", "Chile", "Bolivia", "Paraguay"], 
+    metric="Fixed Telephone Lines"  
 )
 
 # Clean the mobile telephone dataset
 clean_csv(
-    input_file = "RawFiles/MOBILE_TEL_100.csv",  # Added .csv extension
+    input_file = "RawFiles/MOBILE_TEL_100.csv",  
     output_file = "Cleaned_MOBILE_TEL_100_norm.csv",
-    selected_countries=["Argentina", "Uruguay", "Chile", "Bolivia", "Paraguay", "Brasil"], 
-    metric="Mobile Telephone Lines"  # Changed metric name to match data
+    selected_countries=["Argentina", "Uruguay", "Chile", "Bolivia", "Paraguay"], 
+    metric="Mobile Telephone Lines"  
 )
 
 clean_csv(
-    input_file = "RawFiles/API_IT.NET.USER.ZS_DS2_en_csv_v2_76190.csv",  # Added .csv extension
+    input_file = "RawFiles/API_IT.NET.USER.ZS_DS2_en_csv_v2_76190.csv",  
     output_file = "Cleaned_NET.USER_norm.csv",
-    selected_countries=["Argentina", "Uruguay", "Chile", "Bolivia", "Paraguay", "Brasil"], 
-    metric="Internet Usage (%)"  # Changed metric name to match data
-)
+    selected_countries=["Argentina", "Uruguay", "Chile", "Bolivia", "Paraguay"], 
+    metric="Internet Usage (%)" 
