@@ -10,8 +10,7 @@ def analyze_streaming_devices():
     def get_product_stats():
         stats = df.groupby('search_term').agg({
             'price': ['count', 'mean', 'min', 'max', 'std'],
-            'shipping_free': 'mean',
-            'catalog_listing': 'mean'
+            'shipping_free': 'mean'
         })
         print("\n=== Product Category Statistics ===")
         print(stats)
@@ -47,18 +46,8 @@ def analyze_streaming_devices():
         print("\n=== Warranty Duration Statistics (in months) ===")
         print(warranty_stats)
 
-    # 4. Shipping and catalog analysis
-    def analyze_features():
-        features = df.groupby('search_term').agg({
-            'shipping_free': 'mean',
-            'catalog_listing': 'mean'
-        }) * 100
-        
-        print("\n=== Product Features (%) ===")
-        print("Percentage of products with free shipping and catalog listing:")
-        print(features)
-
-    # 5. Price range analysis
+   
+    # 4. Price range analysis
     def analyze_price_ranges():
         # Create price ranges
         df['price_range'] = pd.qcut(df['price'], q=4, labels=['Budget', 'Mid-Low', 'Mid-High', 'Premium'])
@@ -78,7 +67,6 @@ def analyze_streaming_devices():
     get_product_stats()
     analyze_conditions()
     analyze_warranty()
-    analyze_features()
     analyze_price_ranges()
 
 if __name__ == "__main__":

@@ -8,14 +8,18 @@ SELECT DISTINCT
 FROM Customer c
 INNER JOIN Item i ON i.seller_id = c.customer_id
 INNER JOIN Order_Item oi ON oi.item_id = i.item_id
-INNER JOIN "Order" o ON o.order_id = oi.order_id
+INNER JOIN Order o ON o.order_id = oi.order_id
 WHERE 
     EXTRACT(MONTH FROM c.fecha_nacimiento) = EXTRACT(MONTH FROM CURRENT_DATE)
     AND EXTRACT(DAY FROM c.fecha_nacimiento) = EXTRACT(DAY FROM CURRENT_DATE)
     AND EXTRACT(MONTH FROM o.order_date) = 1
     AND EXTRACT(YEAR FROM o.order_date) = 2020
 GROUP BY c.customer_id, c.nombre, c.apellido, c.fecha_nacimiento
-HAVING SUM(oi.quantity * oi.unit_price) > 1500;
+HAVING c.apellido,
+    COUNT(DISTINCT o.order_id) > 1500; --Esto puede ser ventas totales (order ID) o unidades en order_item
+
+    
+
 
 -- 2. Top 5 vendedores de Celulares por mes en 2020
 SELECT 
@@ -24,12 +28,12 @@ SELECT
     c.nombre,
     c.apellido,
     COUNT(DISTINCT o.order_id) as cantidad_ventas,
-    SUM(oi.quantity) as cantidad_productos,
-    SUM(oi.quantity * oi.unit_price) as monto_total
+    SUM(oi.quantity) as cantidad_productos, 
+    SUM(oi.quantity * oi.unit_price) as monto_total 
 FROM Customer c
 INNER JOIN Item i ON i.seller_id = c.customer_id
 INNER JOIN Order_Item oi ON oi.item_id = i.item_id
-INNER JOIN "Order" o ON o.order_id = oi.order_id
+INNER JOIN Order o ON o.order_id = oi.order_id
 INNER JOIN Category cat ON cat.category_id = i.category_id
 WHERE 
     EXTRACT(YEAR FROM o.order_date) = 2020
@@ -42,12 +46,30 @@ GROUP BY
     c.apellido
 QUALIFY ROW_NUMBER() OVER (
     PARTITION BY EXTRACT(YEAR FROM o.order_date), EXTRACT(MONTH FROM o.order_date)
-    ORDER BY SUM(oi.quantity * oi.unit_price) DESC
+    ORDER BY SUM(oi.quantity * oi.unit_price) DESC   -- Top 5 en cantiadad o precio? COUNT(DISTINCT o.order_id) DESC 
 ) <= 5
 ORDER BY 
     año,
     mes,
     monto_total DESC;
+
+/*
+Si no se peude usar qualify pasamos a usar un CTE 
+SELECT 
+    año,
+    mes,
+    nombre,
+    apellido,
+    cantidad_ventas,
+    cantidad_productos,
+    monto_total
+FROM RankedSellers
+WHERE rn <= 5
+ORDER BY 
+    año,
+    mes,
+    monto_total DESC;
+*/
 
 -- 3. Crear y poblar tabla de histórico de precios y estados
 -- Primero creamos la tabla
